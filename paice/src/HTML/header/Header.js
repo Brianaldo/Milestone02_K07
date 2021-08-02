@@ -5,7 +5,8 @@ const Header = ()=>{
     return(
     <>
         <header>
-            <h3>navbar logo</h3>
+            <img alt='logoPaice'></img>
+            <h3>navbar(kalo jadi)</h3>
         </header>
     </>)
 }
