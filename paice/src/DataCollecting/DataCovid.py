@@ -14,3 +14,6 @@ def UpdateData():
     df = df.rename(columns={"Active[c]" : "Active", "Cases per100,000 population[d]" : "Cases_per_100000_population"})
 
     df.to_csv("paice/src/DataCollecting/data_covid.csv", index=False)
+
+if __name__ == "__main__":
+    UpdateData()
