@@ -6,6 +6,96 @@ from bs4 import BeautifulSoup
 Data ini akan diupdate oleh SIRANAP setiap harinya
 '''
 
+def TampilkanProvinsi():
+    ListProvinsi = [
+        "Aceh",
+        "Sumatera Utara",
+        "Sumatera Barat",
+        "Riau",
+        "Jambi",
+        "Sumatera Selatan",
+        "Bengkulu",
+        "Lampung",
+        "Kepulauan Bangka Belitung",
+        "Kepulauan Riau",
+        "DKI Jakarta",
+        "Jawa Barat",
+        "Jawa Tengah",
+        "DI Yogyakarta",
+        "Jawa Timur",
+        "Banten",
+        "Bali",
+        "Nusa Tenggara Barat",
+        "Nusa Tenggara Timur",
+        "Kalimantan Barat",
+        "Kalimantan Tengah",
+        "Kalimantan Selatan",
+        "Kalimantan Timur",
+        "Kalimantan Utara",
+        "Sulawesi Utara",
+        "Sulawesi Tengah",
+        "Sulawesi Selatan",
+        "Sulawesi Tenggara",
+        "Gorontalo",
+        "Sulawesi Barat",
+        "Maluku",
+        "Maluku Utara",
+        "Papua Barat",
+        "Papua"
+    ]
+
+    return ListProvinsi
+
+def TampilkanKabKota(NamaProvinsi):
+
+    KodeProvinsi = {
+        "Aceh" : "11prop",
+        "Sumatera Utara" : "12prop",
+        "Sumatera Barat" : "13prop",
+        "Riau" : "14prop",
+        "Jambi" : "15prop",
+        "Sumatera Selatan" : "16prop",
+        "Bengkulu" : "17prop",
+        "Lampung" : "18prop",
+        "Kepulauan Bangka Belitung" : "19prop",
+        "Kepulauan Riau" : "20prop",
+        "DKI Jakarta" : "31prop",
+        "Jawa Barat" : "32prop",
+        "Jawa Tengah" : "33prop",
+        "DI Yogyakarta" : "34prop",
+        "Jawa Timur" : "35prop",
+        "Banten" : "36prop",
+        "Bali" : "51prop",
+        "Nusa Tenggara Barat" : "52prop",
+        "Nusa Tenggara Timur" : "53prop",
+        "Kalimantan Barat" : "61prop",
+        "Kalimantan Tengah" : "62prop",
+        "Kalimantan Selatan" : "63prop",
+        "Kalimantan Timur" : "64prop",
+        "Kalimantan Utara" : "65prop",
+        "Sulawesi Utara" : "71prop",
+        "Sulawesi Tengah" : "72prop",
+        "Sulawesi Selatan" : "73prop",
+        "Sulawesi Tenggara" : "74prop",
+        "Gorontalo" : "75prop",
+        "Sulawesi Barat" : "76prop",
+        "Maluku" : "81prop",
+        "Maluku Utara" : "82prop",
+        "Papua Barat" : "91prop",
+        "Papua" : "92prop"
+    }
+
+    URLKabKota = "https://yankes.kemkes.go.id/app/siranap/Kabkota?kode_propinsi=" + KodeProvinsi[NamaProvinsi]
+    DataKabKota = requests.get(URLKabKota)
+    JSONKabKota = DataKabKota.json()
+
+    ListKabKota = []
+
+    for i in range(len(JSONKabKota['data'])):
+        ListKabKota.append(JSONKabKota['data'][i]['nama_kabkota'])
+
+    return ListKabKota
+
 def UpdateData(NamaProvinsi, NamaKabKota):
     Jenis = "1"
 
