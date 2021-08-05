@@ -93,7 +93,7 @@ def UpdateData(NamaProvinsi, NamaKabKota):
             break
 
     df = pd.DataFrame(ListRumahSakit)
-    df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv")
+    df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv", index=False)
 
 if __name__ == "__main__":
     UpdateData("Jawa Barat", "Bandung Barat")
