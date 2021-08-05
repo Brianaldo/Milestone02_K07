@@ -168,7 +168,7 @@ def UpdateData(NamaProvinsi, NamaKabKota):
             RumahSakit['Ketersediaan'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:18px;color:#4D514D;">', '').replace('<p class="mb-0" style="font-size:18px;color:#F97B8B;">', '').replace('<b>', '').replace('</b>', '').replace('</p>', '').replace('\r\n', '').replace('!', '').strip().split())
             AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
 
-            RumahSakit['Antrian_Pasien'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:14px;color:#4D514D;">', '').replace('</p>', '').replace('\r\n', '').replace('.', '').strip().split())
+            RumahSakit['Antrian_Pasien'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:14px;color:#4D514D;">', '').replace('<p class="mb-0" style="font-size:14px;color:#F97B8B;">', '').replace('</p>', '').replace('\r\n', '').replace('.', '').strip().split())
             AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
 
             RumahSakit['Waktu_Update'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:13px;color:grey;">', '').replace('</p>', '').replace('\r\n', '').strip().split())
@@ -183,7 +183,22 @@ def UpdateData(NamaProvinsi, NamaKabKota):
             break
 
     df = pd.DataFrame(ListRumahSakit)
+
     df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv", index=False)
+    df.reset_index().to_json("paice/src/DataCollecting/data_rumah_sakit.json", orient='records')
 
 if __name__ == "__main__":
-    UpdateData("Jawa Barat", "Bandung Barat")
+    print(TampilkanProvinsi())
+
+    Provinsi = ""
+
+    while Provinsi not in TampilkanProvinsi():
+        Provinsi = input("Masukkan Provinsi: ")
+
+    print(TampilkanKabKota(Provinsi))
+
+    KabKota = ""
+    while KabKota not in TampilkanKabKota(Provinsi):
+        KabKota = input("Masukkan Kabupaten/Kota: ")
+
+    UpdateData(Provinsi, KabKota)
