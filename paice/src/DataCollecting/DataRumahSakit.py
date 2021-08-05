@@ -1,4 +1,6 @@
 import requests
+import pandas as pd
+from bs4 import BeautifulSoup
 
 '''
 Data ini akan diupdate oleh SIRANAP setiap harinya
@@ -55,7 +57,43 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
     URL = "https://yankes.kemkes.go.id/app/siranap/" + "rumah_sakit" + "?" + "jenis=" + str(Jenis) + "&" + "propinsi=" + KodeProvinsi[NamaProvinsi] + "&" + "kabkota=" + KodeKabKota[NamaKabKota]
 
-    # Baru jadi link generator, nanti aku tambahin webscrapingnya besok
+    Request = requests.get(URL)
+    Soup = BeautifulSoup(Request.text, 'html.parser')
+
+    ListRumahSakit = []
+
+    NamaRumahSakit = Soup.find('h5', {'class' : 'mb-0'})
+    AtributRumahSakit = Soup.find('p', {'class' : 'mb-0'})
+
+    while True:
+        try:
+            RumahSakit = {}
+
+            RumahSakit['Nama'] = " ".join(str(NamaRumahSakit).replace('<h5 class="mb-0" style="color:#4D514D">', '').replace('</h5>', '').replace('\r\n', '').strip().split())
+            NamaRumahSakit = NamaRumahSakit.find_next('h5', {'class' : 'mb-0'})
+
+            RumahSakit['Alamat'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:14px;color:#4D514D;">', '').replace('</p>', '').replace('\r\n', '').strip().split())
+            AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
+
+            RumahSakit['Ketersediaan'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:18px;color:#4D514D;">', '').replace('<p class="mb-0" style="font-size:18px;color:#F97B8B;">', '').replace('<b>', '').replace('</b>', '').replace('</p>', '').replace('\r\n', '').replace('!', '').strip().split())
+            AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
+
+            RumahSakit['Antrian_Pasien'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:14px;color:#4D514D;">', '').replace('</p>', '').replace('\r\n', '').replace('.', '').strip().split())
+            AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
+
+            RumahSakit['Waktu_Update'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:13px;color:grey;">', '').replace('</p>', '').replace('\r\n', '').strip().split())
+            AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
+            
+            if " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:14px;color:#F97B8B;">', '').replace('</p>', '').replace('\r\n', '').replace('.', '').strip().split()) == "cek ketersediaan bed igd di waktu lain":
+                AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
+
+            ListRumahSakit.append(RumahSakit)
+
+        except:
+            break
+
+    df = pd.DataFrame(ListRumahSakit)
+    df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv")
 
 if __name__ == "__main__":
-    UpdateData("Jawa Barat", "Bandung")
+    UpdateData("Jawa Barat", "Bandung Barat")
