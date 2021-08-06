@@ -184,8 +184,8 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
     df = pd.DataFrame(ListRumahSakit)
 
-    df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv", index=False)
-    df.reset_index().to_json("paice/src/DataCollecting/data_rumah_sakit.json", orient='records')
+    df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv", index=False) # Untuk Backend
+    df.reset_index().to_json("paice/src/DataCollecting/data_rumah_sakit.json", orient='records') # Untuk Frontend
 
 if __name__ == "__main__":
     print(TampilkanProvinsi())

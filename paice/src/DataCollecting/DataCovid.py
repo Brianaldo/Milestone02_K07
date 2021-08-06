@@ -13,8 +13,8 @@ def UpdateData():
     df = df.drop(["Recoveryrate", "Fatalityrate", "Official website"], axis=1)
     df = df.rename(columns={"Active[c]" : "Active", "Cases per100,000 population[d]" : "Cases_per_100000_population"})
 
-    df.to_csv("paice/src/DataCollecting/data_covid.csv", index=False)
-    df.reset_index().to_json("paice/src/DataCollecting/data_covid.json", orient='records')
+    df.to_csv("paice/src/DataCollecting/data_covid.csv", index=False) # Untuk Backend
+    df.reset_index().to_json("paice/src/DataCollecting/data_covid.json", orient='records') # Untuk Frontend
 
 if __name__ == "__main__":
     UpdateData()
