@@ -2,21 +2,18 @@ import "./PilihKategori.css";
 import RumahSakit from "./RumahSakit.png";
 import InfoOksigen from "./InfoOksigen.png";
 import LokasiVaksinasi from "./LokasiVaksinasi.png";
-import { useState } from "react";
 
-const PilihKategori = () => {
-  const [currKategori, setCurrKategori] = useState("");
-
+const PilihKategori = (props) => {
   const rumahSakitHandler = () => {
-    setCurrKategori("Rumah Sakit");
+    props.onPilih("Rumah Sakit");
   };
 
   const infoOksigenHandler = () => {
-    setCurrKategori("Info Oksigen");
+    props.onPilih("Info Oksigen");
   };
 
   const lokasiVaksinasiHandler = () => {
-    setCurrKategori("Info Oksigen");
+    props.onPilih("Lokasi Vaksinasi");
   };
 
   return (

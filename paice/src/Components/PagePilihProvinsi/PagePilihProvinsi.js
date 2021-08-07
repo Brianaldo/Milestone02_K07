@@ -1,9 +1,17 @@
+import { useState } from "react";
 import PilihKategori from "./PilihKategori";
+import PilihProvinsi from "./PilihProvinsi";
+import "./PagePilihProvinsi.css"
 
-const PagePilihProvinsi = () => {
+const PagePilihProvinsi = (props) => {
+  const [kategori, setKategori] = useState("");
+  const pilihHandler = (kat) => {
+    setKategori(kat);
+  };
   return (
-    <div>
-      <PilihKategori />
+    <div className="page-pilih-provinsi">
+      <PilihKategori onPilih={pilihHandler} />
+      <PilihProvinsi listProvinsi={props.listProvinsi} kategori={kategori}/>
     </div>
   );
 };
