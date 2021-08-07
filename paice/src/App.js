@@ -1,7 +1,7 @@
 import "./App.css";
-import Dropdown from "./HTML/body/Dropdown";
-import Footer from "./HTML/footer/Footer";
-import Header from "./HTML/header/Header";
+import Dropdown from "./Components/body/Dropdown";
+import Footer from "./Components/footer/Footer";
+import Header from "./Components/header/Header";
 
 
 function App() {
