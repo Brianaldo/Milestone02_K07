@@ -6,7 +6,10 @@ from bs4 import BeautifulSoup
 Data ini akan diupdate oleh SIRANAP setiap harinya
 '''
 
+Data = ""
+
 def TampilkanProvinsi():
+    
     ListProvinsi = [
         "Aceh",
         "Sumatera Utara",
@@ -97,6 +100,9 @@ def TampilkanKabKota(NamaProvinsi):
     return ListKabKota
 
 def UpdateData(NamaProvinsi, NamaKabKota):
+    
+    global Data
+
     Jenis = "1"
 
     KodeProvinsi = {
@@ -185,7 +191,8 @@ def UpdateData(NamaProvinsi, NamaKabKota):
     df = pd.DataFrame(ListRumahSakit)
 
     df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv", index=False) # Untuk Backend
-    df.reset_index().to_json("paice/src/DataCollecting/data_rumah_sakit.json", orient='records') # Untuk Frontend
+    
+    Data = df.reset_index().to_json(orient='records') # Untuk Frontend
 
 if __name__ == "__main__":
     print(TampilkanProvinsi())
