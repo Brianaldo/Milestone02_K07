@@ -1,4 +1,5 @@
 import requests
+import os
 import pandas as pd
 from bs4 import BeautifulSoup
 
@@ -190,7 +191,7 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
     df = pd.DataFrame(ListRumahSakit)
 
-    df.to_csv("paice/src/DataCollecting/data_rumah_sakit.csv", index=False) # Untuk Backend
+    df.to_csv(os.path.join("paice", "src", "DataCollecting", "data_rumah_sakit.csv"), index=False) # Untuk Backend
     
     Data = df.reset_index().to_json(orient='records') # Untuk Frontend
 
