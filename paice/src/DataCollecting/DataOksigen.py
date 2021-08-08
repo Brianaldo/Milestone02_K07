@@ -2,10 +2,13 @@ from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import json
 import os
+import requests
 
 '''
 Data ini akan diupdate oleh WargaBantuWarga setiap harinya
 '''
+
+Data = []
 
 def ScrapeWebsite(link):
     desired_capabilities = DesiredCapabilities.CHROME
@@ -89,7 +92,7 @@ def TampilkanProvinsi():
 
     return ListProvinsi
 
-def TampilkanKota(NamaProvinsi):
+def TampilkanKabKota(NamaProvinsi):
 
     KodeProvinsi = {
         "Aceh" : "aceh",
@@ -128,5 +131,33 @@ def TampilkanKota(NamaProvinsi):
         "Papua" : "papua"
     }
 
+    kebutuhan = "Oksigen"
+
+    url = "https://www.wargabantuwarga.com/" + "provinces/" + KodeProvinsi[NamaProvinsi] + "?" + "kebutuhan=" + kebutuhan
+
+    links = ScrapeWebsite(url)
+
+    ListKabKota = []
+
+    for link in links:
+        if KodeProvinsi[NamaProvinsi] + ".json" in link:
+            DataKabKota = requests.get(link)
+            JSONKabKota = DataKabKota.json()
+
+            for i in range(len(JSONKabKota['pageProps']['contactList'])):
+                if JSONKabKota['pageProps']['contactList'][i]['lokasi'] not in ListKabKota:
+                    ListKabKota.append(JSONKabKota['pageProps']['contactList'][i]['lokasi'])
+
+            break
+
+    return ListKabKota
+
 if __name__ == "__main__":
-    ScrapeWebsite("https://www.wargabantuwarga.com/provinces?kebutuhan=Oksigen")
+    print(TampilkanProvinsi())
+
+    Provinsi = ""
+
+    while Provinsi not in TampilkanProvinsi():
+        Provinsi = input("Masukkan Provinsi: ")
+
+    print(TampilkanKabKota(Provinsi))
