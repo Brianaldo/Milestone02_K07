@@ -10,7 +10,7 @@ const PagePilihProvinsi = (props) => {
   };
   return (
     <div className="page-pilih-provinsi">
-      <PilihKategori onPilih={pilihHandler} />
+      <PilihKategori onPilih={pilihHandler} label="Kategori"/>
       <div className="page-break__container">
         <div className="page-break" />
       </div>
