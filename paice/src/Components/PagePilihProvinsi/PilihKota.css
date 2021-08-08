@@ -1,0 +1,16 @@
+.pilih-kota {
+    width: 100%;
+    display: flex;
+    padding-left: 26px;
+    margin-top: 23px;
+}
+
+.pilih-kota select {
+  font-family: "montserrat", sans-serif;
+  font-weight: 100;
+  border-radius: 8px;
+  width: 228px;
+  height: 24px;
+  font-size: 16px;
+  background-color: grey;
+}

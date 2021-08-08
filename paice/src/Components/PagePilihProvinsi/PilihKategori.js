@@ -5,7 +5,7 @@ import LokasiVaksinasi from "./LokasiVaksinasi.png";
 import { useState } from "react";
 
 const PilihKategori = (props) => {
-  const [currKateg, setCurrKateg] = useState("");
+  const [currKateg, setCurrKateg] = useState(props.current);
 
   const rumahSakitHandler = () => {
     setCurrKateg("Rumah Sakit");

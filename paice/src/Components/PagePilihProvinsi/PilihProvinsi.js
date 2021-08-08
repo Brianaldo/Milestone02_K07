@@ -12,7 +12,7 @@ const PilihProvinsi = (props) => {
   });
 
   const selectHandler = (prov) => {
-    console.log(prov);
+    props.onPilihProvinsi(prov);
   };
 
   return (
