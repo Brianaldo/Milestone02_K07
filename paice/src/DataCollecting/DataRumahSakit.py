@@ -204,13 +204,18 @@ if __name__ == "__main__":
 
     Provinsi = ""
 
-    while Provinsi not in TampilkanProvinsi():
+    ListProvinsi = TampilkanProvinsi()
+
+    while Provinsi not in ListProvinsi:
         Provinsi = input("Masukkan Provinsi: ")
 
     print(TampilkanKabKota(Provinsi))
 
     KabKota = ""
-    while KabKota not in TampilkanKabKota(Provinsi):
+
+    ListKabKota = TampilkanKabKota(Provinsi)
+
+    while KabKota not in ListKabKota:
         KabKota = input("Masukkan Kabupaten/Kota: ")
 
     UpdateData(Provinsi, KabKota)
