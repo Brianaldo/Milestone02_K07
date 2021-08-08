@@ -1,9 +1,55 @@
 .provinsi {
     width: 45%;
-    margin: 3px;
-    height: 50px;
+    height: 100px;
     border-style: hidden;
     background-color: white;
-    box-shadow: 1px 1px 5px gray;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin: 11px;
+    text-align: left;
+    justify-content: right;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+.provinsi .provinsi__text {
+    margin-left: 14px;
+    margin-top: 11px;
+}
+
+.provinsi .provinsi__text h2 {
+    font-family: "montserrat", sans-serif;
+}
+
+.provinsi .provinsi__text p {
+    font-family: "montserrat", sans-serif;
+    font-weight: 100;
+}
+
+.provinsi .provinsi__list-kategori {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+
+.provinsi .provinsi__list-kategori .provinsi__kategori {
+    width: 31px;
+    height: 31px;
+    border-radius: 8px;
+    border-style: hidden;
+    margin-left: -3px;
+    margin-right: 9px;
+    margin-bottom: 11px;
+}
+
+.provinsi .provinsi__list-kategori .provinsi__kategori img {
+    width: 100%;
+    height: 100%;
+    border-style: hidden;
+}
+
+@media only screen and (max-width: 500px) {
+    .provinsi {
+        width: 90%;
+    }
+  }
+  

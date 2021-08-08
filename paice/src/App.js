@@ -138,12 +138,12 @@ function App() {
         />
         <title>Website Paice</title>
       </head>
-      <Header />
+      {/* <Header /> */}
       <div class="container">
-        <Dropdown />
-        {/* <PagePilihProvinsi listProvinsi={DUMMY_LIST_PROVINSI} /> */}
+        {/* <Dropdown /> */}
+        <PagePilihProvinsi listProvinsi={DUMMY_LIST_PROVINSI} />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

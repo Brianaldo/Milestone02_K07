@@ -20,15 +20,15 @@ const PilihProvinsi = (props) => {
     <div className="pilih-provinsi">
       {props.kategori === "Rumah Sakit" &&
         provinsiRumahSakit.map((prov) => (
-          <Provinsi label={prov.provinsi} onSelect={selectHandler} />
+          <Provinsi label={prov.provinsi} rs={prov.rumahSakit} io={prov.infoOksigen} lv={prov.lokasiVaksinasi} onSelect={selectHandler} />
         ))}
       {props.kategori === "Info Oksigen" &&
         provinsiInfoOksigen.map((prov) => (
-          <Provinsi label={prov.provinsi} onSelect={selectHandler} />
+          <Provinsi label={prov.provinsi} rs={prov.rumahSakit} io={prov.infoOksigen} lv={prov.lokasiVaksinasi} onSelect={selectHandler} />
         ))}
       {props.kategori === "Lokasi Vaksinasi" &&
         provinsiLokasiVaksinasi.map((prov) => (
-          <Provinsi label={prov.provinsi} onSelect={selectHandler} />
+          <Provinsi label={prov.provinsi} rs={prov.rumahSakit} io={prov.infoOksigen} lv={prov.lokasiVaksinasi} onSelect={selectHandler} />
         ))}
     </div>
   );

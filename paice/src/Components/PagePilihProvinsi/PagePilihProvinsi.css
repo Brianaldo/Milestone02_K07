@@ -1,3 +1,24 @@
 .page-pilih-provinsi {
-    padding-bottom: 80px;
+  padding-bottom: 80px;
+  background-color: white;
+}
+
+.page-pilih-provinsi .page-break__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  margin-bottom: 20px;
+}
+
+.page-pilih-provinsi div .page-break {
+  height: 1px;
+  width: 515px;
+  background-color: rgba(196, 196, 196, 1);
+}
+
+@media only screen and (max-width: 640px) {
+  .page-pilih-provinsi div .page-break {
+    width: 80%;
+  }
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PilihKategori from "./PilihKategori";
 import PilihProvinsi from "./PilihProvinsi";
-import "./PagePilihProvinsi.css"
+import "./PagePilihProvinsi.css";
 
 const PagePilihProvinsi = (props) => {
   const [kategori, setKategori] = useState("");
@@ -11,7 +11,10 @@ const PagePilihProvinsi = (props) => {
   return (
     <div className="page-pilih-provinsi">
       <PilihKategori onPilih={pilihHandler} />
-      <PilihProvinsi listProvinsi={props.listProvinsi} kategori={kategori}/>
+      <div className="page-break__container">
+        <div className="page-break" />
+      </div>
+      <PilihProvinsi listProvinsi={props.listProvinsi} kategori={kategori} />
     </div>
   );
 };

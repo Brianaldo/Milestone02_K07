@@ -49,6 +49,7 @@ Untuk menjalankan file app.py:
 
 Kita ngelakuin ini semua karena untuk setiap os gak sama file dependencies-nya.
 
+Kalau udah, buka file index.html
 
 Ada 2 fungsi di javascript yg udah gua buat get sama post:
 - fungsi get() untuk melakukan HTTP GET method, nerima parameter (url, fungsi)
@@ -67,17 +68,7 @@ Jadi, untuk sekarang gua bikin segala sesuatu yang dikirm backend formatnya kaya
 fungsi post() sama get() udah gua bikin buat ngeluarin <value>-nya langsung dengan nama respons.
 cara kerjanya kalian bikin dulu fungsi, fungsi ini mengelola data dengan nama respons.
 setelah bikin fungsinya, baru jalanin get() atau post().
-Contoh yang di file index.js:
 
-{ bikin fungsi dengan nama "fungsi")
-function fungsi(){
-      tab.innerHTML = makeTableHTML(respons)
-    }
-
-{jalanin get()}
-get("{masukin url yang dicopy disini}/statistik", fungsi)
 
 kalau kalian mau lihat data yang gua kirim buka ini di browser:
 {masukin url yang dicopy disini}/statistik
-
-Direktori ini jangan kalian update ya di github.
