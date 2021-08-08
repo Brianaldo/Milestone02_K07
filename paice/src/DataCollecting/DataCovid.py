@@ -5,7 +5,7 @@ import os
 Data ini akan terus diupdate oleh Wikipedia setiap harinya
 '''
 
-Data = ""
+Data = []
 
 def UpdateData():
     global Data
@@ -18,8 +18,9 @@ def UpdateData():
     df = df.drop(["Recoveryrate", "Fatalityrate", "Official website"], axis=1)
     df = df.rename(columns={"Active[c]" : "Active", "Cases per100,000 population[d]" : "Cases_per_100000_population"})
 
-    df.to_csv(os.path.join("paice", "src", "DataCollecting", "data_covid.csv"), index=False) # Untuk Backend
-    Data = df.reset_index().to_json(orient='records') # Untuk Frontend
+    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_covid.csv"), index=False) # Untuk Backend
+    Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
 
 if __name__ == "__main__":
     UpdateData()
+    print(Data)
