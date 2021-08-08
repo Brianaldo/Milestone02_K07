@@ -16,7 +16,7 @@ function get(url, fungsi) {
 
 
 // fungsi untuk melakukan HTTP POST method
-function post(url, data, fungsi) {
+function post(url, fungsi, data) {
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(data);
@@ -29,27 +29,86 @@ function post(url, data, fungsi) {
     };
   }
 
+let tab = document.getElementById("table")
+let tab2 = document.getElementById("table2")
 
-// fungsi untuk bikin tabel di html dari array
-function makeTableHTML(myArray) {
-    var result = "<table border=1>";
-    for(var i=0; i<myArray.length; i++) {
-        result += "<tr>";
-        for(var j=0; j<myArray[i].length; j++){
-            result += "<td>"+myArray[i][j]+"</td>";
-        }
-        result += "</tr>";
-    }
-    result += "</table>";
-
-    return result;
+function statistik() {
+  tab.innerHTML = "Loading Provinsi..."
+  tab2.innerHTML = "";
+  function fungsi() {
+    var result = "";
+      for(var i=0; i<respons.length; i++) {
+        result += "<button id=\""+ i + "\" onclick=\"getStatistik(this.id)\">";
+        result += respons[i].Province
+        result += "</button><br>";
+      }
+      tab.innerHTML = result;
+  }
+  get("http://127.0.0.1:5000//statistik", fungsi)
 }
 
-tab = document.getElementById("table")
-button = document.getElementById("button")
-button.addEventListener('click',function() {
-    function fungsi(){
-      tab.innerHTML = makeTableHTML(respons)
+function getStatistik(id) {
+  var result = "";
+  for(var i=0; i<respons.length; i++) {
+    if (parseInt(id) === i) {
+      result += "<p>Provinsi: " + respons[i].Province +"</p>"
+      result += "<p>Kasus: " + respons[i].Cases +"</p>"
+      result += "<p>Kasus per 1000 penduduk: " + respons[i].Cases_per_100000_population +"</p>"
+      result += "<p>Kematian: " + respons[i].Deaths +"</p>"
+      result += "<p>Recoveries: " + respons[i].Recoveries +"</p>"
+      result += "<br><hr>";
+      break;
     }
-    get("{masukin url yang dicopy disini}/statistik", fungsi)
-  })
+  }
+  tab2.innerHTML = result;
+}
+
+function getHospitalProvince() {
+  tab.innerHTML = "Loading Provinsi..."
+  tab2.innerHTML = "";
+  function fungsi() {
+    var result = "";
+      for(var i=0; i<respons.length; i++) {
+        result += "<button id=\""+ i + "\" onclick=\"getHospitalCity(this.id)\">";
+        result += respons[i]
+        result += "</button><br>";
+      }
+      tab.innerHTML = result;
+    }
+  get("http://127.0.0.1:5000//hospital", fungsi)
+}
+
+function getHospitalCity(id) {
+  function fungsi() {
+  var result = "";
+    for(var i=0; i<respons.length; i++) {
+      result += "<button id=\""+ i + "\" onclick=\"getHospital(this.id)\">";
+      result += respons[i]
+      result += "</button><br>";
+    }
+    tab.innerHTML = result;
+  }
+  post("http://127.0.0.1:5000//hospital", fungsi, `{"Provinsi":` + id +`}`)
+}
+
+function getHospital(id) {
+  tab2.innerHTML = "Loading Rumah Sakit..."
+  function fungsi() {
+    var result = "";
+    if (respons.length == 0) {
+      tab2.innerHTML = "Tidak ada data"
+    }
+    else {
+        for(var i=0; i<respons.length; i++) {
+          result += "<p>Nama Rumah Sakit: " + respons[i].Nama +"</p>"
+          result += "<p>Alamat: " + respons[i].Alamat +"</p>"
+          result += "<p>Ketersediaan: " + respons[i].Ketersediaan +"</p>"
+          result += "<p>Antrian Pasien: " + respons[i].Antrian_Pasien +"</p>"
+          result += "<p>Waktu Update: " + respons[i].Waktu_Update +"</p>"
+          result += "<br><hr>";
+        }
+        tab2.innerHTML = result;
+    }
+  }
+  post("http://127.0.0.1:5000//hospital", fungsi,  `{"Kota":` + id +`}`)
+}
