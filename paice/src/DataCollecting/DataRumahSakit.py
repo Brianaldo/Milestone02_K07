@@ -161,6 +161,7 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
     NamaRumahSakit = Soup.find('h5', {'class' : 'mb-0'})
     AtributRumahSakit = Soup.find('p', {'class' : 'mb-0'})
+    NoTelpRumahSakit = Soup.find('span', {'style' : 'font-size:13px;color:grey;'})
 
     while True:
         try:
@@ -177,6 +178,9 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
             RumahSakit['Antrian_Pasien'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:14px;color:#4D514D;">', '').replace('<p class="mb-0" style="font-size:14px;color:#F97B8B;">', '').replace('</p>', '').replace('\r\n', '').replace('.', '').strip().split())
             AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
+
+            RumahSakit['No_Telepon'] = " ".join(str(NoTelpRumahSakit).replace('<span style="font-size:13px;color:grey;">', '').replace('</span>', '').strip().split())
+            NoTelpRumahSakit = NoTelpRumahSakit.find_next('span', {'style' : 'font-size:13px;color:grey;'})
 
             RumahSakit['Waktu_Update'] = " ".join(str(AtributRumahSakit).replace('<p class="mb-0" style="font-size:13px;color:grey;">', '').replace('</p>', '').replace('\r\n', '').strip().split())
             AtributRumahSakit = AtributRumahSakit.find_next('p', {'class' : 'mb-0'})
