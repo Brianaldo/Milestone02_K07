@@ -44,7 +44,7 @@ function statistik() {
       }
       tab.innerHTML = result;
   }
-  get("http://127.0.0.1:5000//statistik", fungsi)
+  get("{Masukiin url yang dicopy ke sini}/statistik", fungsi)
 }
 
 function getStatistik(id) {
@@ -75,7 +75,7 @@ function getHospitalProvince() {
       }
       tab.innerHTML = result;
     }
-  get("http://127.0.0.1:5000//hospital", fungsi)
+  get("{Masukiin url yang dicopy ke sini}/hospital", fungsi)
 }
 
 function getHospitalCity(id) {
@@ -88,7 +88,7 @@ function getHospitalCity(id) {
     }
     tab.innerHTML = result;
   }
-  post("http://127.0.0.1:5000//hospital", fungsi, `{"Provinsi":` + id +`}`)
+  post("{Masukiin url yang dicopy ke sini}/hospital", fungsi, `{"Provinsi":` + id +`}`)
 }
 
 function getHospital(id) {
@@ -110,5 +110,5 @@ function getHospital(id) {
         tab2.innerHTML = result;
     }
   }
-  post("http://127.0.0.1:5000//hospital", fungsi,  `{"Kota":` + id +`}`)
+  post("{Masukiin url yang dicopy ke sini}/hospital", fungsi,  `{"Kota":` + id +`}`)
 }
