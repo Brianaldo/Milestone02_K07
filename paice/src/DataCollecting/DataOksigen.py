@@ -20,10 +20,8 @@ def ScrapeWebsite(link):
     options.add_argument('headless')
     options.add_argument("--ignore-certificate-errors")
 
-    print(os.path.join(os.getcwd(), "chromedriver_win32", "chromedriver.exe")) # BARU BISA WINDOWS DENGAN VERSI CHROME 92
-
     driver = webdriver.Chrome(
-        executable_path=os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe"),
+        executable_path=os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe"), # BARU BISA WINDOWS DENGAN VERSI CHROME 92
         options=options,
         desired_capabilities=desired_capabilities
     )
