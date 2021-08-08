@@ -1,11 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from bs4 import BeautifulSoup
+import pandas as pd
 import json
 import os
+import requests
 
 '''
 Data ini akan diupdate oleh WargaBantuWarga setiap harinya
 '''
+
+Data = []
 
 def ScrapeWebsite(link):
     desired_capabilities = DesiredCapabilities.CHROME
@@ -15,10 +20,8 @@ def ScrapeWebsite(link):
     options.add_argument('headless')
     options.add_argument("--ignore-certificate-errors")
 
-    print(os.path.join(os.getcwd(), "chromedriver_win32", "chromedriver.exe")) # BARU BISA WINDOWS DENGAN VERSI CHROME 92
-
     driver = webdriver.Chrome(
-        executable_path=os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe"),
+        executable_path=os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe"), # BARU BISA WINDOWS DENGAN VERSI CHROME 92
         options=options,
         desired_capabilities=desired_capabilities
     )
@@ -89,7 +92,7 @@ def TampilkanProvinsi():
 
     return ListProvinsi
 
-def TampilkanKota(NamaProvinsi):
+def TampilkanKabKota(NamaProvinsi):
 
     KodeProvinsi = {
         "Aceh" : "aceh",
@@ -128,5 +131,110 @@ def TampilkanKota(NamaProvinsi):
         "Papua" : "papua"
     }
 
+    kebutuhan = "Oksigen"
+
+    url = "https://www.wargabantuwarga.com/" + "provinces/" + KodeProvinsi[NamaProvinsi] + "?" + "kebutuhan=" + kebutuhan
+
+    links = ScrapeWebsite(url)
+
+    ListKabKota = []
+
+    for link in links:
+        if KodeProvinsi[NamaProvinsi] + ".json" in link:
+            DataKabKota = requests.get(link)
+            JSONKabKota = DataKabKota.json()
+
+            for i in range(len(JSONKabKota['pageProps']['contactList'])):
+                if JSONKabKota['pageProps']['contactList'][i]['lokasi'] not in ListKabKota:
+                    ListKabKota.append(JSONKabKota['pageProps']['contactList'][i]['lokasi'])
+
+            break
+
+    return ListKabKota
+
+def UpdateData(NamaProvinsi, NamaKabKota):
+    
+    global Data
+
+    KodeProvinsi = {
+        "Aceh" : "aceh",
+        "Sumatera Utara" : "sumatera-utara",
+        "Sumatera Barat" : "sumatera-barat",
+        "Riau" : "riau",
+        "Jambi" : "jambi",
+        "Sumatera Selatan" : "sumatera-selatan",
+        "Bengkulu" : "bengkulu",
+        "Lampung" : "lampung",
+        "Kepulauan Bangka Belitung" : "bangka-belitung",
+        "Kepulauan Riau" : "kepulauan-riau",
+        "DKI Jakarta" : "dki-jakarta",
+        "Jawa Barat" : "jawa-barat",
+        "Jawa Tengah" : "jawa-tengah",
+        "DI Yogyakarta" : "d-i-yogyakarta",
+        "Jawa Timur" : "jawa-timur",
+        "Banten" : "banten",
+        "Bali" : "bali",
+        "Nusa Tenggara Barat" : "nusa-tenggara-barat",
+        "Nusa Tenggara Timur" : "nusa-tenggara-timur",
+        "Kalimantan Barat" : "kalimantan-barat",
+        "Kalimantan Tengah" : "kalimantan-tengah",
+        "Kalimantan Selatan" : "kalimantan-selatan",
+        "Kalimantan Timur" : "kalimantan-timur",
+        "Kalimantan Utara" : "kalimantan-utara",
+        "Sulawesi Utara" : "sulawesi-utara",
+        "Sulawesi Tengah" : "sulawesi-tengah",
+        "Sulawesi Selatan" : "sulawesi-selatan",
+        "Sulawesi Tenggara" : "sulawesi-tenggara",
+        "Gorontalo" : "gorontalo",
+        "Sulawesi Barat" : "sulawesi-barat",
+        "Maluku" : "maluku",
+        "Maluku Utara" : "maluku-utara",
+        "Papua Barat" : "papua-barat",
+        "Papua" : "papua"
+    }
+
+    kebutuhan = "Oksigen"
+
+    url = "https://www.wargabantuwarga.com/" + "provinces/" + KodeProvinsi[NamaProvinsi] + "?" + "kebutuhan=" + kebutuhan
+
+    links = ScrapeWebsite(url)
+
+    ListOksigen = []
+
+    for link in links:
+        if KodeProvinsi[NamaProvinsi] + ".json" in link:
+            DataOksigen = requests.get(link)
+            JSONOksigen = DataOksigen.json()
+
+            for i in range(len(JSONOksigen['pageProps']['contactList'])):
+
+                if JSONOksigen['pageProps']['contactList'][i]['lokasi'] == NamaKabKota and  JSONOksigen['pageProps']['contactList'][i]['kebutuhan'] == "Oksigen":
+
+                    Oksigen = {}
+
+                    Oksigen['Nama'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['penyedia'], 'lxml').text
+
+                    Oksigen['Alamat'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['alamat'], 'lxml').text
+
+                    Oksigen['No_Telepon'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['kontak'], 'lxml').text
+
+                    Oksigen['URL'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['link'], 'lxml').text
+
+                    Oksigen['Waktu_Update'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['terakhir_update'], 'lxml').text
+
+                    ListOksigen.append(Oksigen)
+
+            break
+    
+    df = pd.DataFrame(ListOksigen)
+
+    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_oksigen.csv"), index=False) # Untuk Backend
+
+    Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
+
 if __name__ == "__main__":
-    ScrapeWebsite("https://www.wargabantuwarga.com/provinces?kebutuhan=Oksigen")
+    Provinsi = "Jawa Barat"
+
+    KabKota = "Bandung"
+
+    UpdateData(Provinsi, KabKota)
