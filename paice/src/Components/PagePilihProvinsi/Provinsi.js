@@ -11,7 +11,7 @@ const Provinsi = (props) => {
     <button className="provinsi" type="button" onClick={clickHandler}>
       <div className="provinsi__text">
         <h2>{props.label}</h2>
-        <p>xx En</p>
+        <p>{props.kasusAktif + " kasus aktif"}</p>
       </div>
       <div className="provinsi__list-kategori">
         {props.rs === true && (

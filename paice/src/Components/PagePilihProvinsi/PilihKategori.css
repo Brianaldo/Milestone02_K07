@@ -2,8 +2,37 @@
   width: 100%;
 }
 
-.pilih-kategori div {
+.pilih-kategori .pilih-kategori__container {
   display: flex;
+}
+
+.pilih-kategori .pilih-kategori__container .pilih-kategori__ {
+  width: 77px;
+  margin-top: 14px;
+  margin-left: 26px;
+  margin-right: -11px;
+}
+
+.pilih-kategori
+  .pilih-kategori__container
+  .pilih-kategori__
+  .pilih-kategori__select {
+    margin-top: 3px;
+    border-radius: 8px;
+  height: 4px;
+  width: 100%;
+}
+
+.red {
+  background-color: #e05c48;
+}
+
+.blue {
+  background-color: #98bcff;
+}
+
+.green {
+  background-color: #96e2c4;
 }
 
 .pilih-kategori h2 {
@@ -14,19 +43,16 @@
   padding-left: 26px;
 }
 
-.pilih-kategori div button {
+.pilih-kategori .pilih-kategori__container .pilih-kategori__ button {
   height: 77px;
   width: 77px;
-  margin-top: 14px;
-  margin-left: 26px;
-  margin-right: -11px;
   border-radius: 8px;
   border-style: hidden;
   background: #000;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.pilih-kategori div button img {
+.pilih-kategori .pilih-kategori__container .pilih-kategori__ button img {
   width: 100%;
   height: 100%;
   border-style: hidden;
