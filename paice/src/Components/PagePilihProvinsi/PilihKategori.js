@@ -18,21 +18,24 @@ const PilihKategori = (props) => {
 
   return (
     <div className="pilih-kategori">
-      <button onClick={rumahSakitHandler}>
-        <img src={RumahSakit} alt="" />
-        <br></br>
-        <label>Rumah Sakit</label>
-      </button>
-      <button onClick={infoOksigenHandler}>
-        <img src={InfoOksigen} alt="" />
-        <br></br>
-        <label>Info Oksigen</label>
-      </button>
-      <button onClick={lokasiVaksinasiHandler}>
-        <img src={LokasiVaksinasi} alt="" />
-        <br></br>
-        <label>Lokasi Vaksinasi</label>
-      </button>
+      <h2>Kategori</h2>
+      <div>
+        <button onClick={rumahSakitHandler}>
+          <img src={RumahSakit} alt="" />
+          {/* <br></br>
+          <label>Rumah Sakit</label> */}
+        </button>
+        <button onClick={infoOksigenHandler}>
+          <img src={InfoOksigen} alt="" />
+          {/* <br></br>
+          <label>Info Oksigen</label> */}
+        </button>
+        <button onClick={lokasiVaksinasiHandler}>
+          <img src={LokasiVaksinasi} alt="" />
+          {/* <br></br>
+          <label>Lokasi Vaksinasi</label> */}
+        </button>
+      </div>
     </div>
   );
 };

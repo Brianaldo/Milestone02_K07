@@ -1,24 +1,33 @@
 .pilih-kategori {
-  display: flex;
   width: 100%;
-  justify-content: center;
 }
 
-.pilih-kategori button {
-  font-family: inherit;
-  padding: 2px;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  margin: 15px;
-  background-color: white;
-  box-shadow: 3px 3px 12px gray;
-  border-radius: 12px;
+.pilih-kategori div {
+  display: flex;
+}
+
+.pilih-kategori h2 {
+  font-size: 36px;
+  font-family: "montserrat", sans-serif;
+  padding-top: 20px;
+  text-align: left;
+  padding-left: 26px;
+}
+
+.pilih-kategori div button {
+  height: 77px;
+  width: 77px;
+  margin-top: 14px;
+  margin-left: 26px;
+  margin-right: -11px;
+  border-radius: 8px;
   border-style: hidden;
+  background: #000;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.pilih-kategori button img {
-  width: 50px;
-  height: 50px;
-  border-style: none;
+.pilih-kategori div button img {
+  width: 100%;
+  height: 100%;
+  border-style: hidden;
 }
