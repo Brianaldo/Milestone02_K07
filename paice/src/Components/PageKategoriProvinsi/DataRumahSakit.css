@@ -1,0 +1,69 @@
+.data-rumah-sakit {
+    width: 91%;
+    border-radius: 8px;
+    background-color: white;
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.data-rumah-sakit .data {
+    width: 84%;
+    margin-right: 15px;
+}
+
+.data-rumah-sakit .data h2 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 26px;
+}
+
+.data-rumah-sakit .data .style {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.data-rumah-sakit .data .style img {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+.data-rumah-sakit .data .style p {
+    font-family: "montserrat", sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+}
+
+.data-rumah-sakit .kategori {
+    width: 77px;
+    height: 77px;
+}
+
+.data-rumah-sakit .kategori img {
+    width: 100%;
+    height: 100%;
+}
+
+.data-rumah-sakit .update-terakhir {
+    width: 100%;
+    text-align: right;
+}
+
+.data-rumah-sakit .update-terakhir p {
+    font-family: "montserrat", sans-serif;
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 640px) {
+    .data-rumah-sakit .kategori {
+        display: none;
+    }
+    .data-rumah-sakit .data {
+        width: 100%;
+    }
+  }

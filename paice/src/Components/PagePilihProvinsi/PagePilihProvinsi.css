@@ -11,14 +11,14 @@
   margin-bottom: 20px;
 }
 
-.page-pilih-provinsi div .page-break {
+.page-pilih-provinsi .page-break__container .page-break {
   height: 1px;
   width: 515px;
   background-color: rgba(196, 196, 196, 1);
 }
 
 @media only screen and (max-width: 640px) {
-  .page-pilih-provinsi div .page-break {
+  .page-pilih-provinsi .page-break__container .page-break {
     width: 80%;
   }
 }
