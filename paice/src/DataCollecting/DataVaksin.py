@@ -90,7 +90,7 @@ def TampilkanProvinsi():
 
     return ListProvinsi
 
-def TampilkanKabKota(NamaProvinsi):
+def TampilkanKabKota(NamaProvinsi, PathDriver):
 
     KodeProvinsi = {
         "Aceh" : "aceh",
@@ -133,7 +133,7 @@ def TampilkanKabKota(NamaProvinsi):
 
     url = "https://www.wargabantuwarga.com/" + "provinces/" + KodeProvinsi[NamaProvinsi] + "?" + "kebutuhan=" + kebutuhan
 
-    links = ScrapeWebsite(url)
+    links = ScrapeWebsite(url, PathDriver)
 
     ListKabKota = []
 
@@ -239,3 +239,9 @@ if __name__ == "__main__":
     PathDriver = os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe")
 
     print(UpdateData(Provinsi, KabKota, PathDriver))
+
+    '''Provinsi = "DKI Jakarta"
+
+    PathDriver = os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe")
+
+    print(TampilkanKabKota(Provinsi, PathDriver))'''

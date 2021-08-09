@@ -1,5 +1,5 @@
 import pandas as pd
-# import os
+import os
 
 '''
 Data ini akan terus diupdate oleh Wikipedia setiap harinya
