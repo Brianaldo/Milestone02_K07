@@ -10,9 +10,7 @@ import requests
 Data ini akan diupdate oleh WargaBantuWarga setiap harinya
 '''
 
-Data = []
-
-def ScrapeWebsite(link):
+def ScrapeWebsite(link, PathDriver):
     desired_capabilities = DesiredCapabilities.CHROME
     desired_capabilities["goog:loggingPrefs"] = {"performance" : "ALL"}
 
@@ -21,7 +19,7 @@ def ScrapeWebsite(link):
     options.add_argument("--ignore-certificate-errors")
 
     driver = webdriver.Chrome(
-        executable_path=os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe"), # BARU BISA WINDOWS DENGAN VERSI CHROME 92
+        executable_path=PathDriver, # BARU BISA WINDOWS DENGAN VERSI CHROME 92
         options=options,
         desired_capabilities=desired_capabilities
     )
@@ -152,9 +150,7 @@ def TampilkanKabKota(NamaProvinsi):
 
     return ListKabKota
 
-def UpdateData(NamaProvinsi, NamaKabKota):
-    
-    global Data
+def UpdateData(NamaProvinsi, NamaKabKota, PathDriver):
 
     KodeProvinsi = {
         "Aceh" : "aceh",
@@ -197,7 +193,7 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
     url = "https://www.wargabantuwarga.com/" + "provinces/" + KodeProvinsi[NamaProvinsi] + "?" + "kebutuhan=" + kebutuhan
 
-    links = ScrapeWebsite(url)
+    links = ScrapeWebsite(url, PathDriver)
 
     ListVaksin = []
 
@@ -228,13 +224,18 @@ def UpdateData(NamaProvinsi, NamaKabKota):
     
     df = pd.DataFrame(ListVaksin)
 
-    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_vaksin.csv"), index=False) # Untuk Backend
+    # Untuk Backend
+    # df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_vaksin.csv"), index=False)
 
     Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
+
+    return Data
 
 if __name__ == "__main__":
     Provinsi = "Jawa Barat"
 
     KabKota = "Bandung"
 
-    UpdateData(Provinsi, KabKota)
+    PathDriver = os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "chromedriver_win32", "chromedriver.exe")
+
+    print(UpdateData(Provinsi, KabKota, PathDriver))
