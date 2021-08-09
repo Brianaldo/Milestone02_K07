@@ -7,6 +7,7 @@ import { DUMMY_LIST_KOTA } from '../Components/PagePilihProvinsi/DummyList';
 import Home from '../Components/body/Home';
 import LandingPage from '../Components/body/LandingPage';
 import CekDisini from '../Components/body/CekDisini';
+import ListKategori from '../Components/body/ListKategori';
 
 
 
@@ -20,6 +21,7 @@ const ContentRoute = ()=>{
                 <Route exact strict path='/'>
                     <LandingPage/>
                     <CekDisini/>
+                    <ListKategori/>
                     <Home/>
                 </Route>
                 {/* PAGE PILIH KOTA/PROVINSI */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { UnorderedListOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 
 
@@ -13,10 +14,12 @@ const CekDisini = ()=>{
             </div>
             <br></br><br></br>
             <div className='cek-disini'>
-                <Button type="primary" id='cekdisinibutton' shape="round"  size={'large'}>
-                    <UnorderedListOutlined/>
-                    <>      Cek Di Sini!</>
-                </Button>
+                <Link to='/kategori'>
+                    <Button type="primary" id='cekdisinibutton' shape="round"  size={'large'}>
+                        <UnorderedListOutlined/>
+                        <>      Cek Di Sini!</>
+                    </Button>
+                </Link>
             </div>
         </div>
     )

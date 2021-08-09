@@ -16,7 +16,7 @@ const Nav = ()=>{
         <div className='container-nav'>
             <div className='container-header header'>
                 <Link to='/'>
-                        <img id='logo' src={`${process.env.PUBLIC_URL}/logo.png`}/>
+                        <img id='logo' src={`${process.env.PUBLIC_URL}/logo.png`} onClick={handleShow}/>
                 </Link>
                 {
                     showNav ? 
