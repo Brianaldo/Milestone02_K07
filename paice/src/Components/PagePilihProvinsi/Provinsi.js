@@ -1,7 +1,7 @@
 import "./Provinsi.css";
-import RumahSakit from "./RumahSakit.png";
-import InfoOksigen from "./InfoOksigen.png";
-import LokasiVaksinasi from "./LokasiVaksinasi.png";
+import RumahSakit from "../PilihKategori/RumahSakit.png";
+import InfoOksigen from "../PilihKategori/InfoOksigen.png";
+import LokasiVaksinasi from "../PilihKategori/LokasiVaksinasi.png";
 
 const Provinsi = (props) => {
   const clickHandler = () => {
