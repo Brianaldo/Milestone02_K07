@@ -131,7 +131,7 @@ def TampilkanKabKota(NamaProvinsi):
         "Papua" : "papua"
     }
 
-    kebutuhan = "Oksigen"
+    kebutuhan = "Tempat%20vaksin"
 
     url = "https://www.wargabantuwarga.com/" + "provinces/" + KodeProvinsi[NamaProvinsi] + "?" + "kebutuhan=" + kebutuhan
 
@@ -193,42 +193,42 @@ def UpdateData(NamaProvinsi, NamaKabKota):
         "Papua" : "papua"
     }
 
-    kebutuhan = "Oksigen"
+    kebutuhan = "Tempat%20vaksin"
 
     url = "https://www.wargabantuwarga.com/" + "provinces/" + KodeProvinsi[NamaProvinsi] + "?" + "kebutuhan=" + kebutuhan
 
     links = ScrapeWebsite(url)
 
-    ListOksigen = []
+    ListVaksin = []
 
     for link in links:
         if KodeProvinsi[NamaProvinsi] + ".json" in link:
-            DataOksigen = requests.get(link)
-            JSONOksigen = DataOksigen.json()
+            DataVaksin = requests.get(link)
+            JSONVaksin = DataVaksin.json()
 
-            for i in range(len(JSONOksigen['pageProps']['contactList'])):
+            for i in range(len(JSONVaksin['pageProps']['contactList'])):
 
-                if JSONOksigen['pageProps']['contactList'][i]['lokasi'] == NamaKabKota and JSONOksigen['pageProps']['contactList'][i]['kebutuhan'] == "Oksigen":
+                if JSONVaksin['pageProps']['contactList'][i]['lokasi'] == NamaKabKota and JSONVaksin['pageProps']['contactList'][i]['kebutuhan'] == "Tempat vaksin":
 
-                    Oksigen = {}
+                    Vaksin = {}
 
-                    Oksigen['Nama'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['penyedia'], 'lxml').text
+                    Vaksin['Nama'] = BeautifulSoup(JSONVaksin['pageProps']['contactList'][i]['penyedia'], 'lxml').text
 
-                    Oksigen['Alamat'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['alamat'], 'lxml').text
+                    Vaksin['Alamat'] = BeautifulSoup(JSONVaksin['pageProps']['contactList'][i]['alamat'], 'lxml').text
 
-                    Oksigen['No_Telepon'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['kontak'], 'lxml').text
+                    Vaksin['No_Telepon'] = BeautifulSoup(JSONVaksin['pageProps']['contactList'][i]['kontak'], 'lxml').text
 
-                    Oksigen['URL'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['link'], 'lxml').text
+                    Vaksin['URL'] = BeautifulSoup(JSONVaksin['pageProps']['contactList'][i]['link'], 'lxml').text
 
-                    Oksigen['Waktu_Update'] = BeautifulSoup(JSONOksigen['pageProps']['contactList'][i]['terakhir_update'], 'lxml').text
+                    Vaksin['Waktu_Update'] = BeautifulSoup(JSONVaksin['pageProps']['contactList'][i]['terakhir_update'], 'lxml').text
 
-                    ListOksigen.append(Oksigen)
+                    ListVaksin.append(Vaksin)
 
             break
     
-    df = pd.DataFrame(ListOksigen)
+    df = pd.DataFrame(ListVaksin)
 
-    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_oksigen.csv"), index=False) # Untuk Backend
+    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_vaksin.csv"), index=False) # Untuk Backend
 
     Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
 
