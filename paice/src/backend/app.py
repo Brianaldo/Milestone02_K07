@@ -5,12 +5,13 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(os.getcwd()), "DataCollecting"))
 import DataCovid
 import DataRumahSakit
+import DataOksigen
 
 app = Flask(__name__)
 CORS(app)
 
-ProvinsiRS = ""
-KotaRS = ""
+# ProvinsiRS = ""
+# KotaRS = ""
 @app.route('/')
 def index():
     return {"Response": "Response"}
@@ -24,18 +25,34 @@ def statistik():
 
 @app.route('/hospital', methods=['GET', 'POST'])
 def hospital():
-    global ProvinsiRS
-    global KotaRS
+    ProvinsiRS = ""
+    KotaRS = ""
     if request.method == 'GET':
-        ProvinsiRS = ""
         return {"Response": DataRumahSakit.TampilkanProvinsi()}
-    elif request.method == 'POST' and "Provinsi" in request.get_json():
-        ProvinsiRS = DataRumahSakit.TampilkanProvinsi()[request.get_json()["Provinsi"]]
-        return {"Response": DataRumahSakit.TampilkanKabKota(DataRumahSakit.TampilkanProvinsi()[request.get_json()["Provinsi"]])}
-    elif request.method == 'POST' and "Kota" in request.get_json():
-        KotaRS = DataRumahSakit.TampilkanKabKota(ProvinsiRS)[request.get_json()["Kota"]]
+    elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
+        ProvinsiRS = request.get_json()["Provinsi"]
+        KotaRS = request.get_json()["Kota"]
         DataRumahSakit.UpdateData(ProvinsiRS, KotaRS)
         return {"Response": DataRumahSakit.Data}
+    elif request.method == 'POST' and "Provinsi" in request.get_json():
+        ProvinsiRS = request.get_json()["Provinsi"]
+        return {"Response": DataRumahSakit.TampilkanKabKota(request.get_json()["Provinsi"])}
+
+
+@app.route('/oksigen', methods=['GET', 'POST'])
+def oksigen():
+    ProvinsiOks = ""
+    KotaOks = ""
+    if request.method == 'GET':
+        return {"Response": DataOksigen.TampilkanProvinsi()}
+    elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
+        ProvinsiOks = request.get_json()["Provinsi"]
+        KotaOks = request.get_json()["Kota"]
+        DataOksigen.UpdateData(ProvinsiOks, KotaOks)
+        return {"Response": DataOksigen.Data}
+    elif request.method == 'POST' and "Provinsi" in request.get_json():
+        ProvinsiOks = request.get_json()["Provinsi"]
+        return {"Response": DataOksigen.TampilkanKabKota(request.get_json()["Provinsi"])}
 
 
 if __name__ == "__main__":

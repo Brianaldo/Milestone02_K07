@@ -1,156 +1,21 @@
+import React, { useContext } from 'react';
 import "./App.css";
-import Dropdown from "./Components/body/Dropdown";
-import Footer from "./Components/footer/Footer";
-import Header from "./Components/header/Header";
-import PagePilihProvinsi from "./Components/PagePilihProvinsi/PagePilihProvinsi";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Layout } from 'antd';
+import ContentRoute from './ContentTorik/ContentRoute';
+import Nav from './Components/header/Nav';
+import { NavContext } from './Context/NavContext';
+import NavBar from './Components/body/NavBar';
 
-const DUMMY_LIST_PROVINSI = [
-  {
-    provinsi: "Aceh",
-    rumahSakit: true,
-    infoOksigen: true,
-    lokasiVaksinasi: true,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bali",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: true,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bangka Belitung",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Banten",
-    rumahSakit: true,
-    infoOksigen: true,
-    lokasiVaksinasi: true,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-  {
-    provinsi: "Bengkulu",
-    rumahSakit: true,
-    infoOksigen: false,
-    lokasiVaksinasi: false,
-    kasusAktif: "100",
-  },
-];
 
-function App() {
+const App = ()=>{
+  const { showNav, setShowNav } = useContext(NavContext)
+  const { Header, Footer } = Layout;
+  console.log(showNav)
+
   return (
-    <>
-      <head>
+    <Router>
+      <head>2
         <meta
           charset="UTF-8"
           name="viewport"
@@ -158,13 +23,19 @@ function App() {
         />
         <title>Website Paice</title>
       </head>
-      {/* <Header /> */}
-      <div class="container">
-        {/* <Dropdown /> */}
-        <PagePilihProvinsi listProvinsi={DUMMY_LIST_PROVINSI} />
-      </div>
-      {/* <Footer /> */}
-    </>
+      <Layout>
+        <Header className='Header'>
+          <Nav/>
+        </Header>
+        {
+          showNav ? 
+          <NavBar/>
+          :
+          <ContentRoute/>
+        }
+        <Footer className='Footer'>Footer</Footer>
+      </Layout>
+    </Router>
   );
 }
 

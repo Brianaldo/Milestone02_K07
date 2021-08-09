@@ -1,3 +1,4 @@
+import React from 'react';
 import "./PilihKota.css";
 
 const PilihKota = (props) => {

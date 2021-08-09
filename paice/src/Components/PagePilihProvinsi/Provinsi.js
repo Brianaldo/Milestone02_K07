@@ -1,6 +1,7 @@
 import "./Provinsi.css";
 import RumahSakit from "../PilihKategori/RumahSakit.png";
 import InfoOksigen from "../PilihKategori/InfoOksigen.png";
+import React from 'react';
 import LokasiVaksinasi from "../PilihKategori/LokasiVaksinasi.png";
 
 const Provinsi = (props) => {
