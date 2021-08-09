@@ -15,16 +15,20 @@ const NavBar = ()=>{
                 <ul>
                     <li>
                         <Link to='/'>
-                            <button onClick={handleClick}>Home</button>
+                            <button onClick={handleClick}><label>Home</label></button>
                         </Link>
                     </li>
                     <li>
                         <Link to='/kategori'>
-                            <button onClick={handleClick}>Kategori</button>
+                            <button onClick={handleClick}><label>Kategori</label></button>
                         </Link>
                     </li>
-                    <li>tester</li>
-                </ul>
+                    <li>
+                        <Link to='/tester'>
+                            <button onClick={handleClick}><label>Tester</label></button>
+                        </Link>                
+                    </li>
+                    </ul>
             </div>
         </div>
     )

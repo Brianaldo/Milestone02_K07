@@ -31,20 +31,40 @@
 .Navbar-List{
     overflow-y: hidden;
     height: 900px;
-    background: wheat;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
+}
+.Navbar-List ul li:hover{
+    background: rgb(187, 239, 255);
+    transition: 0.8s;
 }
 .Navbar{
     height: 2000px;
 }
 .Navbar ul{
-    text-align: center;
+    font-size: 40px;
     display: inline;
 }
 .Navbar ul li{
     text-decoration: none;
     list-style: none;
-    margin: 60px auto;
+    margin: 10px 0;
 }
+.Navbar ul li button{
+    position: relative;
+    left: 30px;
+    text-align: start;
+    width: 90%;
+    height: 50px;
+    border-radius: 16px;
+    background: transparent;
+    border-style: none;
+}
+.Navbar ul li label{
+    font-size: 30px;
+    margin-left: 10px;
+}
+
 #logo{
     width: 60px;
 }
@@ -63,6 +83,7 @@
     height: 320px;
     border-bottom: 1px solid rgb(65, 63, 63);
 }
+
 #cekdisinibutton{
     margin-top: 10px;
     margin-left: 60px;
@@ -97,7 +118,16 @@
     height: 75px;
     padding: 2px;
 }
-
+.navkanan{
+    box-sizing: border-box;
+    padding: 5px;
+    margin-right: 2px;
+}
+.navkanan:hover{
+    margin-right: 0px;
+    border: 2px solid black;
+    border-radius: 7px;
+}
 
 /* ini ngikutin warga bantu warga karena */
 @media screen and (min-width:640px){
@@ -107,6 +137,8 @@
         margin: auto;
         height: 100%;
         width: 640px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
+
         /* border: 2px solid black; */
     }
     .container-header, .container-nav{        

@@ -2,10 +2,17 @@ import "./PilihKategori.css";
 import RumahSakit from "./RumahSakit.png";
 import InfoOksigen from "./InfoOksigen.png";
 import LokasiVaksinasi from "./LokasiVaksinasi.png";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { KategoriContext } from "../../Context/KategoriContext";
 
 const PilihKategori = (props) => {
   const [currKateg, setCurrKateg] = useState(props.current);
+  const { kategori, setKategori } = useContext(KategoriContext)
+  
+  useEffect(()=>{
+    setCurrKateg(kategori)
+    props.onPilih(kategori)
+  },[kategori])
 
   const rumahSakitHandler = () => {
     setCurrKateg("Rumah Sakit");

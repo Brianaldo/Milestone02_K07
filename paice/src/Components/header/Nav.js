@@ -16,13 +16,13 @@ const Nav = ()=>{
         <div className='container-nav'>
             <div className='container-header header'>
                 <Link to='/'>
-                        <img id='logo' src={`${process.env.PUBLIC_URL}/logo.png`} onClick={handleShow}/>
+                        <img id='logo' src={`${process.env.PUBLIC_URL}/logo.png`} onClick={ showNav? handleShow : null}/>
                 </Link>
                 {
                     showNav ? 
-                    <CloseOutlined  onClick={handleShow}/>
+                    <CloseOutlined className='navkanan' onClick={handleShow}/>
                     :
-                    <MenuFoldOutlined onClick={handleShow}/>
+                    <MenuFoldOutlined className='navkanan' onClick={handleShow}/>
                 }
                
             
