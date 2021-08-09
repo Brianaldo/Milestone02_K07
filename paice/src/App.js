@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout } from 'antd';
 import ContentRoute from './ContentTorik/ContentRoute';
+import Nav from './Components/header/Nav';
 
 
 const App = ()=>{
@@ -20,9 +21,11 @@ const App = ()=>{
         <title>Website Paice</title>
       </head>
       <Layout>
-        <Header>Header</Header>
+        <Header className='Header'>
+          <Nav/>
+        </Header>
         <ContentRoute/>
-        <Footer>Footer</Footer>
+        <Footer className='Footer'>Footer</Footer>
       </Layout>
     </Router>
   );
