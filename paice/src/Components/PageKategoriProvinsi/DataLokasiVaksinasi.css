@@ -1,0 +1,75 @@
+.data-lokasi-vaksinasi {
+    width: 91%;
+    border-radius: 8px;
+    background-color: white;
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.data-lokasi-vaksinasi .data {
+    width: 84%;
+    margin-right: 15px;
+}
+
+.data-lokasi-vaksinasi .data h2 {
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 26px;
+}
+
+.data-lokasi-vaksinasi .data .style {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.data-lokasi-vaksinasi .data .style img {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+.data-lokasi-vaksinasi .data .style p {
+    font-family: "montserrat", sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+}
+
+.data-lokasi-vaksinasi .data .style a {
+    font-family: "montserrat", sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+}
+
+.data-lokasi-vaksinasi .kategori {
+    width: 77px;
+    height: 77px;
+}
+
+.data-lokasi-vaksinasi .kategori img {
+    width: 100%;
+    height: 100%;
+}
+
+.data-lokasi-vaksinasi .update-terakhir {
+    width: 100%;
+    text-align: right;
+}
+
+.data-lokasi-vaksinasi .update-terakhir p {
+    font-family: "montserrat", sans-serif;
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 640px) {
+    .data-lokasi-vaksinasi .kategori {
+        display: none;
+    }
+    .data-lokasi-vaksinasi .data {
+        width: 100%;
+    }
+  }
