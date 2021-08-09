@@ -7,8 +7,6 @@ from bs4 import BeautifulSoup
 Data ini akan diupdate oleh SIRANAP setiap harinya
 '''
 
-Data = []
-
 def TampilkanProvinsi():
     
     ListProvinsi = [
@@ -101,8 +99,6 @@ def TampilkanKabKota(NamaProvinsi):
     return ListKabKota
 
 def UpdateData(NamaProvinsi, NamaKabKota):
-    
-    global Data
 
     Jenis = "1"
 
@@ -195,9 +191,12 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
     df = pd.DataFrame(ListRumahSakit)
 
-    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_rumah_sakit.csv"), index=False) # Untuk Backend
+    # Untuk Backend
+    # df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_rumah_sakit.csv"), index=False)
     
     Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
+
+    return Data
 
 if __name__ == "__main__":
     print(TampilkanProvinsi())
@@ -218,4 +217,4 @@ if __name__ == "__main__":
     while KabKota not in ListKabKota:
         KabKota = input("Masukkan Kabupaten/Kota: ")
 
-    UpdateData(Provinsi, KabKota)
+    print(UpdateData(Provinsi, KabKota))
