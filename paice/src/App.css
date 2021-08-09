@@ -29,10 +29,22 @@
     justify-content: space-between;
     height: 100%;
 }
-/* .{
-    margin-top: 100px;
+.Navbar{
+    height: 100vh;
+    z-index: 1;
+    background-color: wheat;
+}
+.Navbar ul{
+    text-align: center;
+    display: inline;
+}
+.Navbar ul li{
+    text-decoration: none;
+    list-style: none;
+    margin: 60px auto;
+}
 
-} */
+
 /* ini ngikutin warga bantu warga karena */
 @media screen and (min-width:640px){
     .container{
@@ -43,7 +55,7 @@
         width: 640px;
         border: 2px solid black;
     }
-    .container-header{
+    .container-header, .container-nav{
         margin: auto;
         height: 100%;
         width: 640px;

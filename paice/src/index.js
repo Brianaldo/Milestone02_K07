@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { NavProvider } from './Context/NavContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NavProvider>
+      <App />
+    </NavProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
