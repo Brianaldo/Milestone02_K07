@@ -10,6 +10,7 @@ const Nav = ()=>{
     
     const handleShow = ()=>{
         setShowNav(!showNav)
+        window.scrollTo(0, 0)
     }
 
     return(
