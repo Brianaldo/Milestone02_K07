@@ -196,6 +196,9 @@ def UpdateData(NamaProvinsi, NamaKabKota):
     
     Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
 
+    for Object in Data:
+        Object['key'] = Object.pop('index')
+
     return Data
 
 if __name__ == "__main__":
