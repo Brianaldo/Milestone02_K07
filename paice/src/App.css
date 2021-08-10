@@ -81,42 +81,52 @@
     box-sizing: border-box;
     padding: 60px;
     height: 320px;
-    border-bottom: 1px solid rgb(65, 63, 63);
 }
 
 #cekdisinibutton{
+    font-weight: bold;
+    color: white;
     margin-top: 10px;
-    margin-left: 60px;
+    margin-left: -34px;
     font-size: 20px;
-    border-radius: 18px;
-    width: 400px;
+    border-radius: 24px;
+    width: 588px;
+    border: none;
     height: 60px;
+    /* background-color: #3088ef; */
+    background-color: #6098ff;
+}
+#cekdisinibutton:hover{
+    background-color: #3088ef;
+    transition: 0.4s;
+}
+#tulisan-kategori{
+    position: relative;
+    top: 18px;
+    left: 12px;
 }
 .listkategori-page{
     font-size: 30px;
-    text-align: center;
     padding: 20px;
     height: 210px;
 }
 .listkategori-page ul{
     display: flex;
-    justify-content: space-evenly;
+    
 }
 .listkategori-page ul li{
+    margin-left: 14px;
     list-style: none;
 }
 .listkategori-page ul li img{
-    opacity: 0.7;
+    opacity: 0.87;
     width: 77px;
     height: 77px;
 }
- .listkategori-page ul li img:hover{
+.listkategori-page ul li img:hover{
     opacity: 1;
     transition: 0.4s;
     box-sizing: border-box;
-    width: 75px;
-    height: 75px;
-    padding: 2px;
 }
 .navkanan{
     box-sizing: border-box;
@@ -127,6 +137,14 @@
     margin-right: 0px;
     border: 2px solid black;
     border-radius: 7px;
+}
+.garis-bawah{
+    position: relative;
+    top: 45px;
+    width: 515px;
+    border-radius: 2px;
+    border-bottom: 1px solid rgba(196, 196, 196, 1);
+    background-color: red;
 }
 
 /* ini ngikutin warga bantu warga karena */

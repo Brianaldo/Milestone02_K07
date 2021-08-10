@@ -16,7 +16,7 @@ const ListKategori = ()=>{
 
     return(
         <div className='listkategori-page'>
-            <h2>KATEGORI</h2>
+            <h2 id='tulisan-kategori'>Kategori</h2>
             <br></br>
             <ul>
                 <li>
