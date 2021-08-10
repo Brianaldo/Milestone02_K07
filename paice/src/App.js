@@ -11,8 +11,8 @@ import NavBar from './Components/body/NavBar';
 const App = ()=>{
   const { showNav, setShowNav } = useContext(NavContext)
   const { Header, Footer } = Layout;
-  console.log(showNav)
 
+  
   return (
     <Router>
       <head>2
