@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PilihKategori from "../PilihKategori/PilihKategori";
 import DataRumahSakit from "./DataRumahSakit";
 import DataInfoOksigen from "./DataInfoOksigen";
 import "./PageKategoriProvinsi.css";
 import PilihKota from "./PilihKota";
 import DataLokasiVaksinasi from "./DataLokasiVaksinasi";
+import { useHistory, useParams } from "react-router-dom";
+import { KategoriContext } from "../../Context/KategoriContext";
 
 const DUMMY_LIST_KOTA = [
   { provinsi: "Aceh", kota: "a" },
@@ -139,25 +141,23 @@ const DUMMY_LIST_LOKASIVAKSINASI = [
   },
 ];
 const PageKategoriProvinsi = () => {
-  const currProv = "Aceh"; //nanti dapet passingan
-  const [kategori, setKategori] = useState("Rumah Sakit"); //nanti dapat passingan
+  const history = useHistory();
+  const { prov, lokasi } = useParams();
+  const { kategori, setKategori } = useContext(KategoriContext);
   const [currKota, setCurrKota] = useState("");
   const pilihHandler = (kat) => {
     setKategori(kat);
+    history.push(`/kategori/${prov}/${kategori}`);
   };
   const selectHandler = (kt) => {
     setCurrKota(kt);
   };
   return (
     <div className="page-kategori-provinsi">
-      <PilihKategori
-        onPilih={pilihHandler}
-        label={currProv}
-        current={kategori}
-      />
+      <PilihKategori onPilih={pilihHandler} label={prov} current={kategori} />
       <PilihKota
         kota={DUMMY_LIST_KOTA.filter((kota) => {
-          return kota.provinsi === currProv;
+          return kota.provinsi === prov;
         })}
         onSelect={selectHandler}
       />
@@ -167,7 +167,11 @@ const PageKategoriProvinsi = () => {
       <div className="list">
         {kategori === "Rumah Sakit" &&
           DUMMY_LIST_RUMAHSAKIT.filter((rs) => {
-            return rs.kota === currKota;
+            if (currKota === "") {
+              return rs;
+            } else {
+              return rs.kota === currKota;
+            }
           }).map((rs) => (
             <DataRumahSakit
               rs={rs.rs}
@@ -180,7 +184,11 @@ const PageKategoriProvinsi = () => {
           ))}
         {kategori === "Info Oksigen" &&
           DUMMY_LIST_INFOOKSIGEN.filter((io) => {
-            return io.kota === currKota;
+            if (currKota === "") {
+              return io;
+            } else {
+              return io.kota === currKota;
+            }
           }).map((io) => (
             <DataInfoOksigen
               io={io.io}
@@ -190,9 +198,13 @@ const PageKategoriProvinsi = () => {
               update={io.update}
             />
           ))}
-          {kategori === "Lokasi Vaksinasi" &&
+        {kategori === "Lokasi Vaksinasi" &&
           DUMMY_LIST_LOKASIVAKSINASI.filter((lv) => {
-            return lv.kota === currKota;
+            if (currKota === "") {
+              return lv;
+            } else {
+              return lv.kota === currKota;
+            }
           }).map((lv) => (
             <DataLokasiVaksinasi
               lv={lv.lv}

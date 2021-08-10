@@ -1,6 +1,12 @@
+import React, { useContext } from 'react';
 import Provinsi from "./Provinsi";
+import { useHistory } from 'react-router-dom';
+import { KategoriContext } from '../../Context/KategoriContext';
 
 const PilihProvinsi = (props) => {
+  const { kategori } = useContext(KategoriContext)
+  const history = useHistory()
+  
   const provinsiRumahSakit = props.listProvinsi.filter((prov) => {
     return prov.rumahSakit === true;
   });
@@ -12,6 +18,8 @@ const PilihProvinsi = (props) => {
   });
 
   const selectHandler = (prov) => {
+    history.push(`/kategori/${prov}/${kategori}`)
+    console.log(kategori)
     console.log(prov);
   };
 

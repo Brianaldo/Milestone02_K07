@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { NavProvider } from './Context/NavContext';
+import { KategoriProvider } from './Context/KategoriContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <NavProvider>
-      <App />
+      <KategoriProvider>
+        <App />
+      </KategoriProvider>
     </NavProvider>
   </React.StrictMode>,
   document.getElementById('root')

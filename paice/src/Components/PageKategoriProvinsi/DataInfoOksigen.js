@@ -1,8 +1,10 @@
+import React from "react";
 import "./DataInfoOksigen.css";
 import InfoOksigen from "./InfoOksigen.png"
 // import Alamat from "./Alamat.png"
 
 const DataInfoOksigen = (props) => {
+
   return (
     <div className="data-info-oksigen">
       <div className="data">

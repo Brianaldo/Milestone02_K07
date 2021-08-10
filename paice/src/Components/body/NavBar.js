@@ -11,19 +11,25 @@ const NavBar = ()=>{
 
     return(
         <div className='container Navbar'>
-            <ul>
-                <li>
-                    <Link to='/'>
-                        <button onClick={handleClick}>Home</button>
-                    </Link>
-                </li>
-                <li>
-                    <Link to='/kategori'>
-                        <button onClick={handleClick}>Kategori</button>
-                    </Link>
-                </li>
-                <li>tester</li>
-            </ul>
+            <div className='Navbar-List'>
+                <ul>
+                    <li>
+                        <Link to='/'>
+                            <button onClick={handleClick}><label>Home</label></button>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to='/kategori'>
+                            <button onClick={handleClick}><label>Kategori</label></button>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to='/tester'>
+                            <button onClick={handleClick}><label>Tester</label></button>
+                        </Link>                
+                    </li>
+                    </ul>
+            </div>
         </div>
     )
 };

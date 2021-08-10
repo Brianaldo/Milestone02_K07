@@ -1,10 +1,14 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { Layout } from 'antd';
 import PagePilihProvinsi from '../Components/PagePilihProvinsi/PagePilihProvinsi';
 import { DUMMY_LIST_PROVINSI } from '../Components/PagePilihProvinsi/DummyList';
 import { DUMMY_LIST_KOTA } from '../Components/PagePilihProvinsi/DummyList';
 import Home from '../Components/body/Home';
+import LandingPage from '../Components/body/LandingPage';
+import CekDisini from '../Components/body/CekDisini';
+import ListKategori from '../Components/body/ListKategori';
+import PageKategoriProvinsi from '../Components/PageKategoriProvinsi/PageKategoriProvinsi';
 
 
 
@@ -16,11 +20,17 @@ const ContentRoute = ()=>{
         <Switch>
             <Content className='container'>
                 <Route exact strict path='/'>
+                    <LandingPage/>
+                    <CekDisini/>
+                    <ListKategori/>
                     <Home/>
                 </Route>
                 {/* PAGE PILIH KOTA/PROVINSI */}
                 <Route exact strict path ='/kategori'>
                     <PagePilihProvinsi className='container' listProvinsi={DUMMY_LIST_PROVINSI} />
+                </Route>
+                <Route exact strict path ='/kategori/:prov/:kategori'>
+                    <PageKategoriProvinsi className='container' />
                 </Route>
             </Content>
         </Switch>
