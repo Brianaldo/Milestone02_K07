@@ -15,7 +15,11 @@ const CekDisini = ()=>{
     return(
         <div className='cekdisini-page'>
             <div className='info-kategori-p'>
-                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p>
+                    <b>Virus corona mulai merebak sejak akhir 2019</b> dan telah banyak memakan korban, baik yang dirawat hingga meninggal dunia.
+                    Pertama kali muncul di Wuhan, China, virus yang menyerang pernapasan manusia ini juga dikenal dengan nama COVID-19,
+                    yang merupakan singkatan dari Coronavirus Disease 19.
+                </p>
             </div>
             <br></br><br></br>
             <div className='cek-disini'>
