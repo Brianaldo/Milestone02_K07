@@ -6,6 +6,7 @@ import ContentRoute from './ContentTorik/ContentRoute';
 import Nav from './Components/header/Nav';
 import { NavContext } from './Context/NavContext';
 import NavBar from './Components/body/NavBar';
+import FooterComp from './Components/footer/FooterComp';
 
 
 const App = ()=>{
@@ -33,7 +34,7 @@ const App = ()=>{
           :
           <ContentRoute/>
         }
-        <Footer className='Footer'>Footer</Footer>
+        <Footer><FooterComp/></Footer>
       </Layout>
     </Router>
   );
