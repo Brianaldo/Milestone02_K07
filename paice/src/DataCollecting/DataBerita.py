@@ -1,10 +1,14 @@
 import requests
 import os
+import re
 import xml.etree.ElementTree as ET
 
 '''
 Data ini akan diupdate oleh covid19.go.id setiap harinya
 '''
+
+def CleanHTML(RawHTML):
+    return re.sub(re.compile('<.*?>'), '', RawHTML)
 
 def TampilkanFeed():
 
@@ -58,10 +62,10 @@ def UpdateData(Feed):
 
         for child in item:
 
-            if child.text == None:
+            if child.text == None or child.tag == 'guid' or child.tag == 'description':
                 continue
             else:
-                News[child.tag] = child.text.encode('utf8')
+                News[child.tag] = " ".join(CleanHTML(child.text).replace('\n', '').replace('=', '').strip().split())
         
         NewsItem.append(News)
 
