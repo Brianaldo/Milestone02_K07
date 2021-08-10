@@ -4,7 +4,7 @@ import React from 'react';
 const FooterComp = ()=>{
     return(
     <div  className='Footer'>
-        <h4>Copyright &copy; 2021 Paice Org &reg;.</h4>
+        <h4>Copyright &copy;. 2021 Paice Org &reg;.</h4>
     </div>
     )
 }
