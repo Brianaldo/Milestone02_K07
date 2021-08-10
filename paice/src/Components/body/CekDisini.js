@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from 'antd';
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-
+import { KategoriContext } from '../../Context/KategoriContext';
 
 
 const CekDisini = ()=>{
+    const { kategori,setKategori } = useContext(KategoriContext)
+
+    const handleCek = ()=>{
+        setKategori('')
+    }
 
     return(
         <div className='cekdisini-page'>
@@ -15,7 +20,7 @@ const CekDisini = ()=>{
             <br></br><br></br>
             <div className='cek-disini'>
                 <Link to='/kategori'>
-                    <Button type="primary" id='cekdisinibutton' shape="round"  size={'large'}>
+                    <Button type="primary" onClick={handleCek} id='cekdisinibutton' shape="round"  size={'large'}>
                         <UnorderedListOutlined/>
                         <>      Cek Di Sini!</>
                     </Button>
