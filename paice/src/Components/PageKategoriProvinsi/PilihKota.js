@@ -8,7 +8,7 @@ const PilihKota = (props) => {
   return (
     <div className="pilih-kota">
       <select onChange={selectHandler}>
-        <option label="Pilih Kota/Kabupaten" selected disabled></option>
+        <option label="Pilih Kota/Kabupaten" value="" selected></option>
         {props.kota.map((kt) => (
           <option value={kt.kota}>{kt.kota}</option>
         ))}
