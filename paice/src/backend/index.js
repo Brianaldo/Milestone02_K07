@@ -37,6 +37,9 @@ let ProvinsiRS = ""
 let arrayProvOks = []
 let arrayKotaOks = []
 let ProvinsiOks = ""
+let arrayProvVak = []
+let arrayKotaVak = []
+let ProvinsiVak = ""
 
 function statistik() {
   tab.innerHTML = "Loading Provinsi..."
@@ -175,4 +178,74 @@ function getOxygen(id) {
     }
   }
   post("http://127.0.0.1:5000/oksigen", fungsi,  `{"Kota":"` + arrayKotaOks[parseInt(id)] +`", "Provinsi":"`+ProvinsiOks+`"}`)
+}
+
+function getVaksinProvince() {
+  tab.innerHTML = "Loading Provinsi..."
+  tab2.innerHTML = "";
+  function fungsi() {
+    var result = "";
+      for(var i=0; i<respons.length; i++) {
+        result += "<button id=\""+ i + "\" onclick=\"getVaksinCity(this.id)\">";
+        result += respons[i]
+        result += "</button><br>";
+      }
+      arrayProvVak = respons
+      tab.innerHTML = result;
+    }
+  get("http://127.0.0.1:5000//vaksin", fungsi)
+}
+
+function getVaksinCity(id) {
+  tab2.innerHTML = "Loading Kota atau Kabupaten (agak lama)..."
+  function fungsi() {
+  var result = "";
+    for(var i=0; i<respons.length; i++) {
+      result += "<button id=\""+ i + "\" onclick=\"getVaksin(this.id)\">";
+      result += respons[i]
+      result += "</button><br>";
+    }
+    arrayKotaVak = respons
+    ProvinsiVak = arrayProvVak[parseInt(id)]
+    tab2.innerHTML = ""
+    tab.innerHTML = result;
+  }
+  post("http://127.0.0.1:5000/vaksin", fungsi, `{"Provinsi":"` + arrayProvVak[parseInt(id)] +`"}`)
+}
+
+function getVaksin(id) {
+  tab2.innerHTML = "Loading Vaksin (agak lama)..."
+  function fungsi() {
+    var result = "";
+    if (respons.length == 0) {
+      tab2.innerHTML = "Tidak ada data"
+    }
+    else {
+        for(var i=0; i<respons.length; i++) {
+          result += "<p>Nama Penyedia Vaksin: " + respons[i].Nama +"</p>"
+          result += "<p>Alamat: " + respons[i].Alamat +"</p>"
+          result += "<p>No. Telepon: " + respons[i].No_Telepon +"</p>"
+          result += "<p>URL: " + respons[i].URL +"</p>"
+          result += "<p>Waktu Update: " + respons[i].Waktu_Update +"</p>"
+          result += "<br><hr>";
+        }
+        tab2.innerHTML = result;
+    }
+  }
+  post("http://127.0.0.1:5000/vaksin", fungsi,  `{"Kota":"` + arrayKotaVak[parseInt(id)] +`", "Provinsi":"`+ProvinsiVak+`"}`)
+}
+
+function getFeed() {
+  tab.innerHTML = "Loading Feed..."
+  tab2.innerHTML = "";
+  function fungsi() {
+    var result = "";
+      for(var i=0; i<respons.length; i++) {
+        result += "<button id=\""+ i + "\">";
+        result += respons[i]
+        result += "</button><br>";
+      }
+      tab.innerHTML = result;
+    }
+  get("http://127.0.0.1:5000//berita", fungsi)
 }

@@ -6,6 +6,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.getcwd()), "DataCollecting"))
 import DataCovid
 import DataRumahSakit
 import DataOksigen
+import DataVaksin
+import DataBerita
 
 app = Flask(__name__)
 CORS(app)
@@ -19,8 +21,7 @@ def index():
 
 @app.route('/statistik')
 def statistik():
-    DataCovid.UpdateData()
-    return {"Response": DataCovid.Data}
+    return {"Response": DataCovid.UpdateData()}
 
 
 @app.route('/hospital', methods=['GET', 'POST'])
@@ -32,8 +33,7 @@ def hospital():
     elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
         ProvinsiRS = request.get_json()["Provinsi"]
         KotaRS = request.get_json()["Kota"]
-        DataRumahSakit.UpdateData(ProvinsiRS, KotaRS)
-        return {"Response": DataRumahSakit.Data}
+        return {"Response": DataRumahSakit.UpdateData(ProvinsiRS, KotaRS)}
     elif request.method == 'POST' and "Provinsi" in request.get_json():
         ProvinsiRS = request.get_json()["Provinsi"]
         return {"Response": DataRumahSakit.TampilkanKabKota(request.get_json()["Provinsi"])}
@@ -48,12 +48,34 @@ def oksigen():
     elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
         ProvinsiOks = request.get_json()["Provinsi"]
         KotaOks = request.get_json()["Kota"]
-        DataOksigen.UpdateData(ProvinsiOks, KotaOks)
-        return {"Response": DataOksigen.Data}
+        return {"Response": DataOksigen.UpdateData(ProvinsiOks, KotaOks, os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
     elif request.method == 'POST' and "Provinsi" in request.get_json():
         ProvinsiOks = request.get_json()["Provinsi"]
-        return {"Response": DataOksigen.TampilkanKabKota(request.get_json()["Provinsi"])}
+        return {"Response": DataOksigen.TampilkanKabKota(request.get_json()["Provinsi"], os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
 
+
+@app.route('/vaksin', methods=['GET', 'POST'])
+def vaksin():
+    ProvinsiVak = ""
+    KotaVak = ""
+    if request.method == 'GET':
+        return {"Response": DataVaksin.TampilkanProvinsi()}
+    elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
+        ProvinsiOks = request.get_json()["Provinsi"]
+        KotaOks = request.get_json()["Kota"]
+        return {"Response": DataVaksin.UpdateData(ProvinsiOks, KotaOks, os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
+    elif request.method == 'POST' and "Provinsi" in request.get_json():
+        ProvinsiOks = request.get_json()["Provinsi"]
+        return {"Response": DataVaksin.TampilkanKabKota(request.get_json()["Provinsi"], os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
+
+
+@app.route('/berita', methods=['GET', 'POST'])
+def berita():
+    if request.method == 'GET':
+        return {"Response": DataBerita.TampilkanFeed()}
+    # elif request.method == 'POST':
+    #     DataBerita.UpdateData(request.get_json())
+    #     return "berhasil"
 
 if __name__ == "__main__":
     app.run(debug=True)
