@@ -25,6 +25,7 @@ const CekDisini = ()=>{
                         <>      Cek Di Sini!</>
                     </Button>
                 </Link>
+                <div className='garis-bawah'/>
             </div>
         </div>
     )
