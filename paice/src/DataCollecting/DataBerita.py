@@ -46,5 +46,26 @@ def UpdateData(Feed):
     with open(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_berita.xml"), 'wb') as f:
         f.write(DataBerita.content)
 
+    tree = ET.parse(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_berita.xml"))
+
+    root = tree.getroot()
+
+    NewsItem = []
+
+    for item in root.findall('./channel/item'):
+
+        News = {}
+
+        for child in item:
+
+            if child.text == None:
+                continue
+            else:
+                News[child.tag] = child.text.encode('utf8')
+        
+        NewsItem.append(News)
+
+    return NewsItem
+
 if __name__ == "__main__":
-    UpdateData("Berita")
+    print(UpdateData("Berita"))
