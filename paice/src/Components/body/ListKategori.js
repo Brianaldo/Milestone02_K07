@@ -16,20 +16,20 @@ const ListKategori = ()=>{
 
     return(
         <div className='listkategori-page'>
-            <h2>KATEGORI</h2>
+            <h2 id='tulisan-kategori'>Kategori</h2>
             <br></br>
             <ul>
-                <li>
+                <li id='rs'>
                     <div className='hiasanlogokategori'>
                         <img src={`${process.env.PUBLIC_URL}/logo/RumahSakit.png`} alt='logo-rumahsakit' name='Rumah Sakit' onClick={handleRedirect}/>
                     </div>
                 </li>
-                <li>
+                <li id='io'>
                     <div className='hiasanlogokategori'>
                         <img src={`${process.env.PUBLIC_URL}/logo/InfoOksigen.png`} alt='logo-tabungoksigen' name='Info Oksigen' onClick={handleRedirect}/>
                     </div>
                 </li>
-                <li>
+                <li id='lv'>
                     <div className='hiasanlogokategori'>
                         <img src={`${process.env.PUBLIC_URL}/logo/LokasiVaksinasi.png`} alt='logo-vaksin' name='Lokasi Vaksinasi' onClick={handleRedirect}/>
                     </div>
