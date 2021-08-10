@@ -19,7 +19,7 @@ def ScrapeWebsite(link, PathDriver):
     options.add_argument("--ignore-certificate-errors")
 
     driver = webdriver.Chrome(
-        executable_path=PathDriver, # BARU BISA WINDOWS DENGAN VERSI CHROME 92
+        executable_path=PathDriver, # BARU BISA WINDOWS DAN MACOS DENGAN VERSI CHROME 92
         options=options,
         desired_capabilities=desired_capabilities
     )
