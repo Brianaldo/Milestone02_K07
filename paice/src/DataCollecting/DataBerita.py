@@ -2,6 +2,7 @@ import requests
 import os
 import re
 import xml.etree.ElementTree as ET
+import pandas as pd
 
 '''
 Data ini akan diupdate oleh covid19.go.id setiap harinya
@@ -69,7 +70,19 @@ def UpdateData(Feed):
         
         NewsItem.append(News)
 
-    return NewsItem
+    df = pd.DataFrame(NewsItem)
+
+    df = df.rename(columns={"title" : "Judul", "link" : "URL", "pubDate" : "Waktu_Update"})
+
+    # Untuk Backend
+    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_berita.csv"), index=False)
+
+    Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
+
+    for Object in Data:
+        Object['key'] = Object.pop('index')
+
+    return Data
 
 if __name__ == "__main__":
     print(UpdateData("Berita"))
