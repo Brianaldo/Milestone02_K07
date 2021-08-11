@@ -28,7 +28,7 @@ const DataRumahSakit = (props) => {
         <img src={RumahSakit}/>
       </div>
       <div className="update-terakhir">
-        <p>{"Diupdate: " + props.update}</p>
+        <p>{props.update}</p>
       </div>
     </div>
   );
