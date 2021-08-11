@@ -17,6 +17,7 @@ def ScrapeWebsite(link, PathDriver):
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
     options.add_argument("--ignore-certificate-errors")
+    options.add_argument("--log-level=1")
 
     driver = webdriver.Chrome(
         executable_path=PathDriver, # BARU BISA WINDOWS DAN MACOS DENGAN VERSI CHROME 92
