@@ -198,7 +198,7 @@ const PageKategoriProvinsi = () => {
       })
         .then((res) => res.json())
         .then((Data) => {
-          setListLV(Data.Response);
+          setListKota(Data.Response);
         });
     }
     history.push(`/kategori/${prov}/${kategori}`);
