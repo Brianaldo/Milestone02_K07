@@ -56,11 +56,10 @@ def oksigen():
     elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
         ProvinsiOks = request.get_json()["Provinsi"]
         KotaOks = request.get_json()["Kota"]
-        return {"Response": DataOksigen.UpdateData(ProvinsiOks, KotaOks, os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
+        return {"Response": DataOksigen.UpdateData(ProvinsiOks, KotaOks, os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_mac64', 'chromedriver'))}
     elif request.method == 'POST' and "Provinsi" in request.get_json():
         ProvinsiOks = request.get_json()["Provinsi"]
-        return {"Response": DataOksigen.TampilkanKabKota(request.get_json()["Provinsi"], os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
-
+        return {"Response": DataOksigen.TampilkanKabKota(request.get_json()["Provinsi"], os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_mac64', 'chromedriver'))} 
 
 @app.route('/vaksin', methods=['GET', 'POST'])
 def vaksin():
@@ -71,10 +70,10 @@ def vaksin():
     elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
         ProvinsiOks = request.get_json()["Provinsi"]
         KotaOks = request.get_json()["Kota"]
-        return {"Response": DataVaksin.UpdateData(ProvinsiOks, KotaOks, os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
+        return {"Response": DataVaksin.UpdateData(ProvinsiOks, KotaOks, os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_mac64', 'chromedriver'))}
     elif request.method == 'POST' and "Provinsi" in request.get_json():
         ProvinsiOks = request.get_json()["Provinsi"]
-        return {"Response": DataVaksin.TampilkanKabKota(request.get_json()["Provinsi"], os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe'))}
+        return {"Response": DataVaksin.TampilkanKabKota(request.get_json()["Provinsi"], os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_mac64', 'chromedriver'))}
 
 
 @app.route('/berita', methods=['GET', 'POST'])
