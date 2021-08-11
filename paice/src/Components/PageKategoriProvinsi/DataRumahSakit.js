@@ -1,6 +1,9 @@
 import "./DataRumahSakit.css";
-import RumahSakit from "./RumahSakit.png"
-// import Alamat from "./Alamat.png"
+import RumahSakit from "./RumahSakit.png";
+import Lokasi from "./Lokasi.png";
+import JumlahAntri from "./JumlahAntri.png";
+import JumlahBed from "./JumlahBed.png";
+import NoTelp from "./NoTelp.png";
 
 const DataRumahSakit = (props) => {
   return (
@@ -8,24 +11,24 @@ const DataRumahSakit = (props) => {
       <div className="data">
         <h2>{props.rs}</h2>
         <div className="style">
-          <img src={null}/>
+          <img src={Lokasi} alt="" />
           <p>{props.alamat}</p>
         </div>
         <div className="style">
-          <img />
+          <img src={NoTelp} alt="" />
           <p>{props.telp}</p>
         </div>
         <div className="style">
-          <img />
+          <img src={JumlahBed} alt="" />
           <p>{props.jumlahBed}</p>
         </div>
         <div className="style">
-          <img />
+          <img src={JumlahAntri} alt=""/>
           <p>{props.jumlahAntrian}</p>
         </div>
       </div>
       <div className="kategori">
-        <img src={RumahSakit}/>
+        <img src={RumahSakit} />
       </div>
       <div className="update-terakhir">
         <p>{props.update}</p>
