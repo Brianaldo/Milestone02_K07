@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import PilihKategori from "../PilihKategori/PilihKategori";
 import DataRumahSakit from "./DataRumahSakit";
 import DataInfoOksigen from "./DataInfoOksigen";
@@ -145,6 +145,7 @@ const PageKategoriProvinsi = () => {
   const { prov, lokasi } = useParams();
   const { kategori, setKategori } = useContext(KategoriContext);
   const [currKota, setCurrKota] = useState("");
+  const [listKota, setListKota] = useState([]);
   const pilihHandler = (kat) => {
     setKategori(kat);
     history.push(`/kategori/${prov}/${kategori}`);
@@ -152,13 +153,32 @@ const PageKategoriProvinsi = () => {
   const selectHandler = (kt) => {
     setCurrKota(kt);
   };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/hospital", {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        Provinsi: prov,
+      }),
+    })
+      .then((res) => res.json())
+      .then((Data) => {
+        setListKota(Data.Response);
+        console.log(Data.Response)
+      });
+  }, []);
+
+  console.log(listKota);
+
   return (
     <div className="page-kategori-provinsi">
       <PilihKategori onPilih={pilihHandler} label={prov} current={kategori} />
       <PilihKota
-        kota={DUMMY_LIST_KOTA.filter((kota) => {
-          return kota.provinsi === prov;
-        })}
+        kota={listKota}
         onSelect={selectHandler}
       />
       <div className="page-break__container">

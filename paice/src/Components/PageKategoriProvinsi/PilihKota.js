@@ -10,7 +10,7 @@ const PilihKota = (props) => {
       <select onChange={selectHandler}>
         <option label="Pilih Kota/Kabupaten" value="" selected></option>
         {props.kota.map((kt) => (
-          <option value={kt.kota}>{kt.kota}</option>
+          <option value={kt}>{kt}</option>
         ))}
       </select>
     </div>
