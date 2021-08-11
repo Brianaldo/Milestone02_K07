@@ -191,6 +191,8 @@ def UpdateData(NamaProvinsi, NamaKabKota):
 
     df = pd.DataFrame(ListRumahSakit)
 
+    df = df.replace("", "-")
+
     # Untuk Backend
     # df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_rumah_sakit.csv"), index=False)
     

@@ -53,6 +53,8 @@ def UpdateData():
 
     df = Table[0]["COVID-19 cases in Indonesia[a][b]"]
 
+    df = df.replace("", "-")
+
     df = df.drop(df.index[35])
     df = df.drop(["Recoveryrate", "Fatalityrate", "Official website"], axis=1)
     df = df.rename(columns={"Active[c]" : "kasus_aktif", "Cases per100,000 population[d]" : "kasus_per_100000_penduduk", "index" : "key", "Province" : "provinsi", "Cases" : "kasus_kumulatif", "Recoveries" : "sembuh", "Deaths" : "meninggal"})

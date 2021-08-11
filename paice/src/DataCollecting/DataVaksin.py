@@ -224,6 +224,8 @@ def UpdateData(NamaProvinsi, NamaKabKota, PathDriver):
     
     df = pd.DataFrame(ListVaksin)
 
+    df = df.replace("", "-")
+
     # Untuk Backend
     # df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_vaksin.csv"), index=False)
 

@@ -69,6 +69,8 @@ def UpdateData(Feed):
 
     df = pd.DataFrame(NewsItem)
 
+    df = df.replace("", "-")
+
     df = df.rename(columns={"title" : "Judul", "link" : "URL", "pubDate" : "Waktu_Update"})
 
     # Untuk Backend
