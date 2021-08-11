@@ -5,15 +5,6 @@ import "./PagePilihProvinsi.css";
 import { NavContext } from '../../Context/NavContext';
 import { KategoriContext } from '../../Context/KategoriContext';
 import { ProvinsiContext } from '../../Context/ProvinsiContext';
-// import PilihKota from "./PilihKota"; 
-
-// const DUMMY_LIST_KOTA = [
-//   { provinsi: "Aceh", kota: "a" },
-//   { provinsi: "Aceh", kota: "b" },
-//   { provinsi: "Banten", kota: "c" },
-//   { provinsi: "Aceh", kota: "d" },
-//   { provinsi: "Banten", kota: "e" },
-// ];
 
 const PagePilihProvinsi = (props) => {
   const [data, setData] = useState([{}]);
