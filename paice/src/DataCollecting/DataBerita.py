@@ -47,11 +47,8 @@ def UpdateData(Feed):
 
     URL = "http://covid19.go.id/feed/" + KodeFeed[Feed]
     DataBerita = requests.get(URL)
-    
-    with open(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_berita.xml"), 'wb') as f:
-        f.write(DataBerita.content)
 
-    tree = ET.parse(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_berita.xml"))
+    tree = ET.ElementTree(ET.fromstring(DataBerita.content))
 
     root = tree.getroot()
 
