@@ -32,7 +32,7 @@ const PilihProvinsi = (props) => {
             rs={prov.rumahSakit}
             io={prov.infoOksigen}
             lv={prov.lokasiVaksinasi}
-            kasusAktif={prov.kasusAktif}
+            kasusAktif={prov.kasus_aktif}
             onSelect={selectHandler}
           />
         ))}
@@ -43,7 +43,7 @@ const PilihProvinsi = (props) => {
             rs={prov.rumahSakit}
             io={prov.infoOksigen}
             lv={prov.lokasiVaksinasi}
-            kasusAktif={prov.kasusAktif}
+            kasusAktif={prov.kasus_aktif}
             onSelect={selectHandler}
           />
         ))}
@@ -54,7 +54,7 @@ const PilihProvinsi = (props) => {
             rs={prov.rumahSakit}
             io={prov.infoOksigen}
             lv={prov.lokasiVaksinasi}
-            kasusAktif={prov.kasusAktif}
+            kasusAktif={prov.kasus_aktif}
             onSelect={selectHandler}
           />
         ))}

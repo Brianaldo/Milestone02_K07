@@ -1,27 +1,47 @@
-import React, { useContext } from 'react';
-import { useState } from "react";
+import React, { useEffect, useState, useContext } from 'react';
 import PilihKategori from "../PilihKategori/PilihKategori";
 import PilihProvinsi from "./PilihProvinsi";
 import "./PagePilihProvinsi.css";
 import { NavContext } from '../../Context/NavContext';
 import { KategoriContext } from '../../Context/KategoriContext';
+import { ProvinsiContext } from '../../Context/ProvinsiContext';
 // import PilihKota from "./PilihKota"; 
 
-const DUMMY_LIST_KOTA = [
-  { provinsi: "Aceh", kota: "a" },
-  { provinsi: "Aceh", kota: "b" },
-  { provinsi: "Banten", kota: "c" },
-  { provinsi: "Aceh", kota: "d" },
-  { provinsi: "Banten", kota: "e" },
-];
+// const DUMMY_LIST_KOTA = [
+//   { provinsi: "Aceh", kota: "a" },
+//   { provinsi: "Aceh", kota: "b" },
+//   { provinsi: "Banten", kota: "c" },
+//   { provinsi: "Aceh", kota: "d" },
+//   { provinsi: "Banten", kota: "e" },
+// ];
 
 const PagePilihProvinsi = (props) => {
+  const [data, setData] = useState([{}]);
+  const { provinsi, setProvinsi } = useContext(ProvinsiContext)
+
+
+  useEffect(() => {
+    fetch("http://localhost:5000/statistik").then(
+      res => res.json(),
+    ).then( Data =>{
+      setData(Data.Response)
+      console.log(Data)
+    })
+  }, [])
+
   const { kategori, setKategori } = useContext(KategoriContext)
 
   const pilihHandler = (kat) => {
     setKategori(kat);
+    console.log(kategori)
   };
 
+  // console.log(data.Response)
+  // console.log(data)
+
+  const selectHandler = (val) => {
+    console.log(val);
+  };
   return (
     <div className="page-pilih-provinsi">
       <PilihKategori onPilih={pilihHandler} label="Kategori" current="" />
@@ -29,7 +49,7 @@ const PagePilihProvinsi = (props) => {
         <div className="page-break" />
       </div>
       <PilihProvinsi
-        listProvinsi={props.listProvinsi}
+        listProvinsi={data}
         kategori={kategori}
       />
     </div>

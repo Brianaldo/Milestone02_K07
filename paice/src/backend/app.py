@@ -18,11 +18,19 @@ CORS(app)
 def index():
     return {"Response": "Response"}
 
-
 @app.route('/statistik')
 def statistik():
-    return {"Response": DataCovid.UpdateData()}
-
+    Data = DataCovid.UpdateData()
+    for datas in Data:
+        del datas["kasus_kumulatif"]
+        del datas["kasus_per_100000_penduduk"]
+        del datas["meninggal"]
+        del datas["sembuh"]
+        datas["rumahSakit"] = True
+        datas["infoOksigen"] = True
+        datas["lokasiVaksinasi"] = True
+    Data.pop()
+    return {"Response": Data}
 
 @app.route('/hospital', methods=['GET', 'POST'])
 def hospital():
