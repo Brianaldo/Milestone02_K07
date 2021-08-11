@@ -20,12 +20,8 @@ const PagePilihProvinsi = (props) => {
 
   const pilihHandler = (kat) => {
     setKategori(kat);
-    console.log(kategori)
   };
 
-  const selectHandler = (val) => {
-    console.log(val);
-  };
   return (
     <div className="page-pilih-provinsi">
       <PilihKategori onPilih={pilihHandler} label="Kategori" current="" />

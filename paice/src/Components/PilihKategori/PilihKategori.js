@@ -4,6 +4,7 @@ import InfoOksigen from "./InfoOksigen.png";
 import LokasiVaksinasi from "./LokasiVaksinasi.png";
 import { useState, useContext, useEffect } from "react";
 import { KategoriContext } from "../../Context/KategoriContext";
+import axios from 'axios';
 
 const PilihKategori = (props) => {
   const [currKateg, setCurrKateg] = useState(props.current);

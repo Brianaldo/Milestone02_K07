@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import { NavProvider } from './Context/NavContext';
 import { KategoriProvider } from './Context/KategoriContext';
+import { MainProvider } from './Context/MainProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <NavProvider>
-      <KategoriProvider>
+    <MainProvider>
         <App />
-      </KategoriProvider>
-    </NavProvider>
+    </MainProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
