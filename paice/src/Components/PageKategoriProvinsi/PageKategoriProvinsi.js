@@ -19,6 +19,7 @@ const PageKategoriProvinsi = () => {
   const [listLV, setListLV] = useState([]);
 
   const pilihHandler = (kat) => {
+    setListKota([]);
     setKategori(kat);
     setListRS([]);
     setListIO([]);
@@ -26,7 +27,7 @@ const PageKategoriProvinsi = () => {
     if (kategori === "Rumah Sakit") {
       fetch("http://localhost:5000/hospital", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -41,7 +42,7 @@ const PageKategoriProvinsi = () => {
     } else if (kategori === "Info Oksigen") {
       fetch("http://localhost:5000/oksigen", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -56,7 +57,7 @@ const PageKategoriProvinsi = () => {
     } else if (kategori === "Lokasi Vaksinasi") {
       fetch("http://localhost:5000/vaksin", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -76,7 +77,7 @@ const PageKategoriProvinsi = () => {
     if (kategori === "Rumah Sakit") {
       fetch("http://localhost:5000/hospital", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -92,7 +93,7 @@ const PageKategoriProvinsi = () => {
     } else if (kategori === "Info Oksigen") {
       fetch("http://localhost:5000/oksigen", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -108,7 +109,7 @@ const PageKategoriProvinsi = () => {
     } else if (kategori === "Lokasi Vaksinasi") {
       fetch("http://localhost:5000/vaksin", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -130,7 +131,7 @@ const PageKategoriProvinsi = () => {
     if (kategori === "Rumah Sakit") {
       fetch("http://localhost:5000/hospital", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -145,7 +146,7 @@ const PageKategoriProvinsi = () => {
     } else if (kategori === "Info Oksigen") {
       fetch("http://localhost:5000/oksigen", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -160,7 +161,7 @@ const PageKategoriProvinsi = () => {
     } else if (kategori === "Lokasi Vaksinasi") {
       fetch("http://localhost:5000/vaksin", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -178,7 +179,7 @@ const PageKategoriProvinsi = () => {
   return (
     <div className="page-kategori-provinsi">
       <PilihKategori onPilih={pilihHandler} label={prov} current={kategori} />
-      <PilihKota kota={listKota} onSelect={selectHandler} />
+      <PilihKota kota={listKota} onSelect={selectHandler} default="__DEFAULT__"/>
       <div className="page-break__container">
         <div className="page-break" />
       </div>

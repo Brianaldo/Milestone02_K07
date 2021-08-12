@@ -7,8 +7,9 @@ const PilihKota = (props) => {
   };
   return (
     <div className="pilih-kota">
-      <select onChange={selectHandler} >
-        <option label="Pilih Kota/Kabupaten" value="" selected disabled></option>
+      <select onChange={selectHandler}>
+        {props.kota.length === 0 && <option selected label="Pilih Kota/Kabupaten" />}
+        {props.kota.length !== 0 && <option selected disabled label="Pilih Kota/Kabupaten" />}
         {props.kota.map((kt) => (
           <option value={kt}>{kt}</option>
         ))}
