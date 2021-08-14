@@ -232,7 +232,7 @@ def UpdateData(NamaProvinsi, NamaKabKota, PathDriver):
     df = df.drop_duplicates(subset=['Nama'])
 
     # Untuk Backend
-    df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_oksigen.csv"), index=False)
+    # df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_oksigen.csv"), index=False)
 
     Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
 

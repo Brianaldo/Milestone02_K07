@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Provinsi from "./Provinsi";
+import "./PilihProvinsi.css"
 import { useHistory } from 'react-router-dom';
 import { KategoriContext } from '../../Context/KategoriContext';
 

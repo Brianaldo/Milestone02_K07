@@ -4,7 +4,9 @@
     border-style: hidden;
     background-color: white;
     border-radius: 8px;
-    margin: 11px;
+    margin: 1%;
+    margin-top: 11px;
+    margin-bottom: 11px;
     text-align: left;
     justify-content: right;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -28,7 +30,7 @@
     width: 100%;
     display: flex;
     margin-top: 10px;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 }
 
 .provinsi .provinsi__list-kategori .provinsi__kategori {
@@ -36,8 +38,8 @@
     height: 31px;
     border-radius: 8px;
     border-style: hidden;
-    margin-left: -3px;
-    margin-right: 9px;
+    /* margin-left: -3px;
+    margin-right: 9px; */
     margin-bottom: 11px;
 }
 
@@ -49,7 +51,10 @@
 
 @media only screen and (max-width: 500px) {
     .provinsi {
+        margin: 5%;
         width: 90%;
+        margin-top: 11px;
+        margin-bottom: 11px;
     }
   }
   

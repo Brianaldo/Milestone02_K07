@@ -32,6 +32,7 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    width: 100vw;
 }
 .Navbar-List{
     overflow-y: hidden;
@@ -70,6 +71,8 @@
 
 #logo{
     width: 60px;
+    margin-left: 15px;
+    /* padding-right: 15px; */
 }
 .landing-page{
     width: 640px;
@@ -146,10 +149,10 @@
 .navkanan{
     box-sizing: border-box;
     padding: 5px;
-    margin-right: 2px;
+    margin-right: 17px;
 }
 .navkanan:hover{
-    margin-right: 0px;
+    margin-right: 15px;
     border: 2px solid black;
     border-radius: 7px;
 }
@@ -162,23 +165,32 @@
     background-color: red;
 }
 
+.container-header, .container-nav{        
+    position: relative;
+    margin: auto;
+    height: 100%;
+    width: 100vw;
+    /* padding-left: 15px; */
+    /* padding-right: 15px; */
+}
+
+.container{
+    position: relative;
+    top: 60px;
+    margin: auto;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
+    /* border: 2px solid black; */
+}
+
 /* ini ngikutin warga bantu warga karena */
 @media screen and (min-width:640px){
     .container{
-        position: relative;
-        top: 60px;
-        margin: auto;
-        height: 100%;
-        min-height: 722px;
         width: 640px;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
-
-        /* border: 2px solid black; */
     }
     .container-header, .container-nav{        
-        position: relative;
-        margin: auto;
-        height: 100%;
         width: 640px;
     }
 }
