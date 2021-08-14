@@ -1,0 +1,14 @@
+.peta {
+    width: 100%;
+    height: 100%;
+}
+
+.peta .provinsi {
+    transform: scale(0.81);
+    width: 100%;
+    height: 100%;
+}
+
+.peta .kasus {
+    position: absolute;
+}
