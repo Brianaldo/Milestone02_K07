@@ -9,6 +9,7 @@ import CekDisini from "../Components/body/CekDisini";
 import ListKategori from "../Components/body/ListKategori";
 import PageKategoriProvinsi from "../Components/PageKategoriProvinsi/PageKategoriProvinsi";
 import Peta from "../Components/Peta/Peta";
+import Berita from "../Components/body/Berita"
 
 const ContentRoute = () => {
   const { Content } = Layout;
@@ -20,7 +21,8 @@ const ContentRoute = () => {
           <Route exact strict path="/">
             <LandingPage />
             <Peta />
-            <CekDisini />
+            {/* <CekDisini /> */}
+            <Berita />
             {/* <ListKategori/> */}
           </Route>
           {/* PAGE PILIH KOTA/PROVINSI */}

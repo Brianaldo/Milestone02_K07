@@ -1,0 +1,24 @@
+.berita {
+    padding-bottom: 30px;
+}
+
+.berita .page-break__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .berita .page-break__container .page-break {
+    height: 1px;
+    width: 515px;
+    background-color: rgba(196, 196, 196, 1);
+  }
+  
+  @media only screen and (max-width: 640px) {
+    .berita .page-break__container .page-break {
+      width: 80%;
+    }
+  }
+  

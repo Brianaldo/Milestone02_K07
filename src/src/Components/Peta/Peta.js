@@ -1,4 +1,5 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Peta.css";
 
 const Peta = () => {
@@ -12,8 +13,8 @@ const Peta = () => {
 
   const showHandler = (event) => {
     const positionHandler = (ev) => {
-      let lebar = (window.innerWidth - 640)/2
-      let tinggi = (window.scrollY - 60)
+      let lebar = (window.innerWidth - 640) / 2;
+      let tinggi = window.scrollY - 60;
       setX(ev.clientX - lebar);
       setY(ev.clientY + tinggi);
       // console.log(window.width)
@@ -339,20 +340,20 @@ const Peta = () => {
     },
   ];
 
-  const [__PETA__, set__PETA__] = useState([{}])
-  const [totalKasus, setTotalKasus] = useState({})
+  const [__PETA__, set__PETA__] = useState([{}]);
+  const [totalKasus, setTotalKasus] = useState({});
 
   useEffect(() => {
-    fetch("https://paice--backend.herokuapp.com")
+    fetch("https://paice-backend.herokuapp.com")
       .then((res) => res.json())
       .then((Data) => {
         for (let i = 0; i < __PETA__temp.length; i++) {
-          __PETA__temp[i].kasus_aktif = Data.Response[i].kasus_aktif
-          __PETA__temp[i].sembuh = Data.Response[i].sembuh
-          __PETA__temp[i].meninggal = Data.Response[i].meninggal
+          __PETA__temp[i].kasus_aktif = Data.Response[i].kasus_aktif;
+          __PETA__temp[i].sembuh = Data.Response[i].sembuh;
+          __PETA__temp[i].meninggal = Data.Response[i].meninggal;
         }
         set__PETA__(__PETA__temp);
-        setTotalKasus(Data.Response[__PETA__temp.length])
+        setTotalKasus(Data.Response[__PETA__temp.length]);
       });
   }, []);
 
@@ -394,18 +395,23 @@ const Peta = () => {
         <p>{tampilanSembuh + " Sembuh"}</p>
       </div>
       <div className="total-kasus">
-          <div className="total-kasus__satuan">
-            <p>Kasus</p>
-            <h2>{totalKasus.kasus_kumulatif}</h2>
-          </div>
-          <div className="total-kasus__satuan">
-            <p>Meninggal</p>
-            <h2>{totalKasus.meninggal}</h2>
-          </div>
-          <div className="total-kasus__satuan">
-            <p>Sembuh</p>
-            <h2>{totalKasus.sembuh}</h2>
-          </div>
+        <div className="total-kasus__satuan">
+          <p>Kasus</p>
+          <h2>{totalKasus.kasus_kumulatif}</h2>
+        </div>
+        <div className="total-kasus__satuan">
+          <p>Meninggal</p>
+          <h2>{totalKasus.meninggal}</h2>
+        </div>
+        <div className="total-kasus__satuan">
+          <p>Sembuh</p>
+          <h2>{totalKasus.sembuh}</h2>
+        </div>
+      </div>
+      <div className="peta__container">
+        <Link to="/kategori">
+          <button id="peta-button">TELUSURI SEKARANG</button>
+        </Link>
       </div>
     </div>
   );

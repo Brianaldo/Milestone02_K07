@@ -1,0 +1,31 @@
+.berita-satuan {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* padding: 10px; */
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.berita-satuan h2 {
+    margin-left: 10px;
+    margin-right: 10px;
+    /* font-family: "montserrat", sans-serif; */
+    font-weight: 100;
+    margin-top: 15px;
+    color: black;
+    font-style: normal;
+}
+
+.berita-satuan embed {
+    width: 90%;
+    height: 300px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}

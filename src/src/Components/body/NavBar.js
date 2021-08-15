@@ -23,11 +23,11 @@ const NavBar = ()=>{
                             <button onClick={handleClick}><label>Kategori</label></button>
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to='/tester'>
                             <button onClick={handleClick}><label>Tester</label></button>
                         </Link>                
-                    </li>
+                    </li> */}
                     </ul>
             </div>
         </div>
