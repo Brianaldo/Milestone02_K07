@@ -12,8 +12,10 @@ const Peta = () => {
 
   const showHandler = (event) => {
     const positionHandler = (ev) => {
-      setX(ev.clientX - 150);
-      setY(ev.clientY + 200);
+      let lebar = (window.innerWidth - 640)/2
+      let tinggi = (window.scrollY - 60)
+      setX(ev.clientX - lebar);
+      setY(ev.clientY + tinggi);
       // console.log(window.width)
     };
     window.addEventListener("mousemove", positionHandler);
@@ -338,6 +340,7 @@ const Peta = () => {
   ];
 
   const [__PETA__, set__PETA__] = useState([{}])
+  const [totalKasus, setTotalKasus] = useState({})
 
   useEffect(() => {
     fetch("https://paice--backend.herokuapp.com")
@@ -349,11 +352,13 @@ const Peta = () => {
           __PETA__temp[i].meninggal = Data.Response[i].meninggal
         }
         set__PETA__(__PETA__temp);
+        setTotalKasus(Data.Response[__PETA__temp.length])
       });
   }, []);
 
   return (
     <div className="peta">
+      <h2>Peta Persebaran Interaktif</h2>
       <svg
         className="provinsi"
         xmlns="http://www.w3.org/2000/svg"
@@ -387,6 +392,20 @@ const Peta = () => {
         <p>{tampilanKasusAktif + " Kasus Aktif"}</p>
         <p>{tampilanMeninggal + " Meninggal"}</p>
         <p>{tampilanSembuh + " Sembuh"}</p>
+      </div>
+      <div className="total-kasus">
+          <div className="total-kasus__satuan">
+            <p>Kasus</p>
+            <h2>{totalKasus.kasus_kumulatif}</h2>
+          </div>
+          <div className="total-kasus__satuan">
+            <p>Meninggal</p>
+            <h2>{totalKasus.meninggal}</h2>
+          </div>
+          <div className="total-kasus__satuan">
+            <p>Sembuh</p>
+            <h2>{totalKasus.sembuh}</h2>
+          </div>
       </div>
     </div>
   );
