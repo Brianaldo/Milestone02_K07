@@ -96,6 +96,16 @@
     background-color: black;
     margin-left: 7px;
 }
+#contact-button:hover{
+    position: relative;
+    top: 223px;
+    transition: 0.1s;
+}
+#telusuri-button:hover{
+    position: relative;
+    top: 223px;
+    transition: 0.1s;
+}
 .cekdisini-page{
     box-sizing: border-box;
     height: 320px;

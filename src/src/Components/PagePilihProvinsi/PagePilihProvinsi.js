@@ -12,7 +12,7 @@ const PagePilihProvinsi = (props) => {
 
 
   useEffect(() => {
-    fetch("http://localhost:5000/statistik").then(
+    fetch("https://paice-backend.herokuapp.com/statistik").then(
       res => res.json(),
     ).then( Data =>{
       setData(Data.Response)

@@ -25,7 +25,7 @@ const PageKategoriProvinsi = () => {
     setListIO([]);
     setListLV([]);
     if (kategori === "Rumah Sakit") {
-      fetch("http://localhost:5000/hospital", {
+      fetch("https://paice-backend.herokuapp.com/hospital", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const PageKategoriProvinsi = () => {
           setListKota(Data.Response);
         });
     } else if (kategori === "Info Oksigen") {
-      fetch("http://localhost:5000/oksigen", {
+      fetch("https://paice-backend.herokuapp.com/oksigen", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const PageKategoriProvinsi = () => {
           setListKota(Data.Response);
         });
     } else if (kategori === "Lokasi Vaksinasi") {
-      fetch("http://localhost:5000/vaksin", {
+      fetch("https://paice-backend.herokuapp.com/vaksin", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const PageKategoriProvinsi = () => {
 
   const selectHandler = (kt) => {
     if (kategori === "Rumah Sakit") {
-      fetch("http://localhost:5000/hospital", {
+      fetch("https://paice-backend.herokuapp.com/hospital", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -91,7 +91,7 @@ const PageKategoriProvinsi = () => {
           setListRS(Data.Response);
         });
     } else if (kategori === "Info Oksigen") {
-      fetch("http://localhost:5000/oksigen", {
+      fetch("https://paice-backend.herokuapp.com/oksigen", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -107,7 +107,7 @@ const PageKategoriProvinsi = () => {
           setListIO(Data.Response);
         });
     } else if (kategori === "Lokasi Vaksinasi") {
-      fetch("http://localhost:5000/vaksin", {
+      fetch("https://paice-backend.herokuapp.com/vaksin", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -129,7 +129,7 @@ const PageKategoriProvinsi = () => {
 
   useEffect(() => {
     if (kategori === "Rumah Sakit") {
-      fetch("http://localhost:5000/hospital", {
+      fetch("https://paice-backend.herokuapp.com/hospital", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -144,7 +144,7 @@ const PageKategoriProvinsi = () => {
           setListKota(Data.Response);
         });
     } else if (kategori === "Info Oksigen") {
-      fetch("http://localhost:5000/oksigen", {
+      fetch("https://paice-backend.herokuapp.com/oksigen", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -159,7 +159,7 @@ const PageKategoriProvinsi = () => {
           setListKota(Data.Response);
         });
     } else if (kategori === "Lokasi Vaksinasi") {
-      fetch("http://localhost:5000/vaksin", {
+      fetch("https://paice-backend.herokuapp.com/vaksin", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
