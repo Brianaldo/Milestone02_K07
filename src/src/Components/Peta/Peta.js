@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./Peta.css";
 
 const Peta = () => {
@@ -12,8 +12,9 @@ const Peta = () => {
 
   const showHandler = (event) => {
     const positionHandler = (ev) => {
-      setX(ev.clientX);
-      setY(ev.clientY);
+      setX(ev.clientX - 150);
+      setY(ev.clientY + 200);
+      // console.log(window.width)
     };
     window.addEventListener("mousemove", positionHandler);
     setNamaProvinsi(event.target.getAttribute("provinsi"));
@@ -21,23 +22,21 @@ const Peta = () => {
     setTampilanMeninggal(event.target.getAttribute("sembuh"));
     setTampilanSembuh(event.target.getAttribute("meninggal"));
     setVisibility("block");
-    console.log("masuk")
   };
 
   const hideHandler = () => {
     setVisibility("none");
-    console.log("kluar")
   };
 
-  const __PETA__ = [
+  const __PETA__temp = [
     {
       provinsi: "Aceh",
       d: "m 36.70571,92.057885 -0.17,0.1 -0.71,-1.09 -1.25,-1.34 -0.98,-0.46 -0.59,-0.1 -0.24,-0.15 0.11,-0.15 0.99,-0.2 2.06,0.13 0.69,1.08 0.34,0.98 -0.01,0.86 -0.24,0.34 z m -27.5499995,-61.11 2.5899995,1.42 0.08,0.66 0.28,0.46 1.01,1 1.79,1.4 0.85,0.35 3.94,0.98 4.04,0.27 1.91,-0.35 2.23,-0.88 0.36,0 0.9,0.48 1.52,-0.36 1.12,0.12 1.41,0.53 0.38,0.33 0.32,0.86 0.62,0.21 0.98,-0.2 3.93,-1.52 0.47,0.02 0.88,0.89 1.09,1.51 2.15,2.26 1.56,1.32 1.21,0.28 0.89,1.77 0.15,1.52 0.41,0.97 0.44,0.59 -0.09,0.93 0.82,-0.1 0.97,0.36 0.64,0.31 2.06,1.58 0.14,1.33 -0.36,0.86 0,0 -0.4,0.14 -0.8,-0.15 -0.77,0.21 -0.06,0.32 -0.27,0.12 -0.56,0.12 -0.38,-0.09 -0.09,0.21 0.3,0.53 -0.03,0.38 -0.41,0.24 0.15,0.47 -0.47,0.68 0.03,0.97 -0.21,0.29 -0.24,1.33 -1.21,0.65 0.06,0.38 -0.15,0.27 -0.56,-0.38 -0.18,0.03 -0.09,0.32 0.41,0.74 -0.12,0.35 -1.48,1.18 -0.44,0.62 0.33,0.82 0.47,0.5 0,0.32 0.27,0.18 -0.03,0.74 0.74,0.35 0.21,0.88 0.56,0.41 -0.33,0.53 0.27,0.56 0.03,0.44 0.65,0.44 0.27,-0.12 0.38,0.71 -0.24,0.79 -2.37,0.65 0.09,0.18 0.59,0.12 0.5,0.5 0.06,0.74 0.62,0.65 -0.09,0.97 -0.62,-0.06 -0.18,0.12 0.21,0.26 -0.03,0.53 0.27,0.88 0,1.06 0.92,0.24 0.59,1.06 0.95,0.12 -0.03,0.26 0.24,0.29 -0.33,0.5 -0.06,0.38 0.15,0.65 0.5,0.5 0.03,0.26 -0.62,0.21 -0.24,1.41 0.18,1 0.41,0.56 -0.06,0.71 0.83,0.35 0.53,1.62 -0.61,2.79 0,0 -3.51,-1.98 -0.4,0 -0.93,0.46 -2.1,-0.53 -1.65,-2.3 -0.1,-4 -0.32,-2.17 -0.58,-1.78 -0.2,-0.21 -0.8,-0.01 -1.57,-0.62 -0.47,-0.22 -0.66,-0.63 -1.24,-1.73 -0.46,-1.96 -0.47,-0.77 -1.53,-0.52 -1.58,-2.52 -1.23,-2.32 -1.4,-0.78 -0.47,-0.52 -0.3,-1.13 -1.6,-1.12 -2.64,-0.15 -1.33,0.22 -0.68,-0.14 -0.52,-0.3 -1.68,-1.64 -1.86,-2.77 -1.7,-1.81 -0.76,-0.24 -1.31,-1.01 -0.98,-0.44 -1.17,-1.04 -1.96,-2.36 -2.8399995,-2.64 -2.3,-1.88 -1.87,-2.83 -2.41,-4.69 0.34,-0.67 -0.06,-0.3 -1.17000004,-1.87 0.4,-2.12 -0.56,-1.28 0.17,-1.57 0.86000004,0.01 2.17,-1.4 0.4,-0.07 2.87,0.44 2.43,0.76 z",
       title: "Aceh",
       id: "ID-AC",
-      kasus_aktif: "100",
-      sembuh: "100",
-      meninggal: "100",
+      kasus_aktif: "",
+      sembuh: "",
+      meninggal: "",
     },
     {
       provinsi: "Bali",
@@ -338,25 +337,48 @@ const Peta = () => {
     },
   ];
 
+  const [__PETA__, set__PETA__] = useState([{}])
+
+  useEffect(() => {
+    fetch("https://paice--backend.herokuapp.com")
+      .then((res) => res.json())
+      .then((Data) => {
+        for (let i = 0; i < __PETA__temp.length; i++) {
+          __PETA__temp[i].kasus_aktif = Data.Response[i].kasus_aktif
+          __PETA__temp[i].sembuh = Data.Response[i].sembuh
+          __PETA__temp[i].meninggal = Data.Response[i].meninggal
+        }
+        set__PETA__(__PETA__temp);
+      });
+  }, []);
+
   return (
     <div className="peta">
       <svg
         className="provinsi"
-        // onMouseOver={hideHandler}
         xmlns="http://www.w3.org/2000/svg"
+        // width="396.27298"
+        // height="158.33197"
         width="792.54596"
         height="316.66394"
+        // width="1585.09192"
+        // height="633.32788"
+        viewBox="0 0 792.54596 316.6639"
+        fill="#98BCFF"
       >
         {__PETA__.map((prov) => (
           <path
             d={prov.d}
             title={prov.title}
             id={prov.id}
+            stroke-widths="2px"
+            stroke="white"
             provinsi={prov.provinsi}
             kasus_aktif={prov.kasus_aktif}
             sembuh={prov.sembuh}
             meninggal={prov.meninggal}
-            onMouseOver={showHandler}
+            onMouseEnter={showHandler}
+            onMouseLeave={hideHandler}
           />
         ))}
       </svg>

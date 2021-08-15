@@ -20,7 +20,7 @@ const DataLokasiVaksinasi = (props) => {
         <div className="style">
           <img src={URL} alt="" />
           <a href={props.link} target="_blank">
-            {props.link}
+            {props.lv}
           </a>
         </div>
       </div>

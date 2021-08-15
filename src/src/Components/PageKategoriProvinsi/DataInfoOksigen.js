@@ -21,7 +21,7 @@ const DataInfoOksigen = (props) => {
         </div>
         <div className="style">
           <img src={URL} alt="" />
-          <a href={props.link} target="_blank">{props.link}</a>
+          <a href={props.link} target="_blank">{props.io}</a>
         </div>
       </div>
       <div className="kategori">

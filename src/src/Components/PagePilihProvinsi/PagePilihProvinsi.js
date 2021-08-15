@@ -16,7 +16,6 @@ const PagePilihProvinsi = (props) => {
       res => res.json(),
     ).then( Data =>{
       setData(Data.Response)
-      console.log(Data)
     })
   }, [])
 
@@ -24,7 +23,6 @@ const PagePilihProvinsi = (props) => {
 
   const pilihHandler = (kat) => {
     setKategori(kat);
-    console.log(kategori)
   };
 
   // console.log(data.Response)
