@@ -21,7 +21,7 @@ const ContentRoute = ()=>{
                 <Route exact strict path='/'>
                     <LandingPage/>
                     <CekDisini/>
-                    <ListKategori/>
+                    {/* <ListKategori/> */}
                 </Route>
                 {/* PAGE PILIH KOTA/PROVINSI */}
                 <Route exact strict path ='/kategori'>
