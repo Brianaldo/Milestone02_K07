@@ -18,13 +18,15 @@ const PageKategoriProvinsi = () => {
   const [listRS, setListRS] = useState([]);
   const [listIO, setListIO] = useState([]);
   const [listLV, setListLV] = useState([]);
-  const [loading, setLoading] = useState(false)
-  const [kategoriClicked, setKategoriClicked] = useState(false)
-  const [error, setError] = useState(false)
+  const [loadingKota, setLoadingKota] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [kategoriClicked, setKategoriClicked] = useState(false);
+  const [error, setError] = useState(false);
+  const [isKotaTerpilih, setIsKotaTerpilih] = useState(false);
 
   const pilihHandler = (kat) => {
     setKategoriClicked(true);
-    setLoading(true);
+    setLoadingKota(true);
     setListKota([]);
     setKategori(kat);
     setListRS([]);
@@ -45,10 +47,11 @@ const PageKategoriProvinsi = () => {
         .then((res) => res.json())
         .then((Data) => {
           setListKota(Data.Response);
-          setLoading(false);
+          setLoadingKota(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
+        })
+        .catch((e) => {
+          setError(true);
         });
     } else if (kategori === "Info Oksigen") {
       fetch("https://paice-backend.herokuapp.com/oksigen", {
@@ -64,10 +67,11 @@ const PageKategoriProvinsi = () => {
         .then((res) => res.json())
         .then((Data) => {
           setListKota(Data.Response);
-          setLoading(false);
+          setLoadingKota(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
+        })
+        .catch((e) => {
+          setError(true);
         });
     } else if (kategori === "Lokasi Vaksinasi") {
       fetch("https://paice-backend.herokuapp.com/vaksin", {
@@ -83,16 +87,18 @@ const PageKategoriProvinsi = () => {
         .then((res) => res.json())
         .then((Data) => {
           setListKota(Data.Response);
-          setLoading(false);
+          setLoadingKota(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
+        })
+        .catch((e) => {
+          setError(true);
         });
     }
     history.push(`/kategori/${prov}/${kategori}`);
   };
 
   const selectHandler = (kt) => {
+    setIsKotaTerpilih(true);
     setKategoriClicked(false);
     setLoading(true);
     setError(false);
@@ -113,8 +119,9 @@ const PageKategoriProvinsi = () => {
           setListRS(Data.Response);
           setLoading(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
+        })
+        .catch((e) => {
+          setError(true);
         });
     } else if (kategori === "Info Oksigen") {
       fetch("https://paice-backend.herokuapp.com/oksigen", {
@@ -133,8 +140,9 @@ const PageKategoriProvinsi = () => {
           setListIO(Data.Response);
           setLoading(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
+        })
+        .catch((e) => {
+          setError(true);
         });
     } else if (kategori === "Lokasi Vaksinasi") {
       fetch("https://paice-backend.herokuapp.com/vaksin", {
@@ -153,17 +161,16 @@ const PageKategoriProvinsi = () => {
           setListLV(Data.Response);
           setLoading(false);
           setError(false);
-        }).catch((e) => {
+        })
+        .catch((e) => {
           setError(true);
-          console.log("error")
+          console.log("error");
         });
     }
   };
 
-  console.log(listRS);
-
   useEffect(() => {
-    setLoading(true)
+    setLoadingKota(true);
     setError(false);
     if (kategori === "Rumah Sakit") {
       fetch("https://paice-backend.herokuapp.com/hospital", {
@@ -179,11 +186,12 @@ const PageKategoriProvinsi = () => {
         .then((res) => res.json())
         .then((Data) => {
           setListKota(Data.Response);
-          setLoading(false);
+          setLoadingKota(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
         })
+        .catch((e) => {
+          setError(true);
+        });
     } else if (kategori === "Info Oksigen") {
       fetch("https://paice-backend.herokuapp.com/oksigen", {
         headers: {
@@ -198,10 +206,11 @@ const PageKategoriProvinsi = () => {
         .then((res) => res.json())
         .then((Data) => {
           setListKota(Data.Response);
-          setLoading(false);
+          setLoadingKota(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
+        })
+        .catch((e) => {
+          setError(true);
         });
     } else if (kategori === "Lokasi Vaksinasi") {
       fetch("https://paice-backend.herokuapp.com/vaksin", {
@@ -217,10 +226,11 @@ const PageKategoriProvinsi = () => {
         .then((res) => res.json())
         .then((Data) => {
           setListKota(Data.Response);
-          setLoading(false);
+          setLoadingKota(false);
           setError(false);
-        }).catch((e) => {
-          setError(true)
+        })
+        .catch((e) => {
+          setError(true);
         });
     }
   }, []);
@@ -228,17 +238,38 @@ const PageKategoriProvinsi = () => {
   return (
     <div className="page-kategori-provinsi">
       <PilihKategori onPilih={pilihHandler} label={prov} current={kategori} />
-      <PilihKota kota={listKota} onSelect={selectHandler} default="__DEFAULT__"/>
+      <div className="container-pilih-kota">
+        <PilihKota
+          kota={listKota}
+          onSelect={selectHandler}
+          default="__DEFAULT__"
+        />
+        {loadingKota && <div className="loaderKota" />}
+      </div>
       <div className="page-break__container">
         <div className="page-break" />
       </div>
-      {(!error && loading) && <Loader/>}
+      {!error && loading && <Loader />}
       <div className="list">
-        {(!loading && !error && !kategoriClicked && kategori === "Rumah Sakit" && listRS.length === 0) && <div>Tidak ada data</div>}
-        {(!loading && !error && !kategoriClicked && kategori === "Info Oksigen" && listIO.length === 0) && <div>Tidak ada data</div>}
-        {(!loading && !error && !kategoriClicked && kategori === "Lokasi Vaksinasi" && listLV.length === 0) && <div>Tidak ada data</div>}
+        {!isKotaTerpilih && <div>Pilih Kota/Kabupaten</div>}
+        {!loading &&
+          !error &&
+          !kategoriClicked &&
+          kategori === "Rumah Sakit" &&
+          listRS.length === 0 && <div>Tidak ada data</div>}
+        {!loading &&
+          !error &&
+          !kategoriClicked &&
+          kategori === "Info Oksigen" &&
+          listIO.length === 0 && <div>Tidak ada data</div>}
+        {!loading &&
+          !error &&
+          !kategoriClicked &&
+          kategori === "Lokasi Vaksinasi" &&
+          listLV.length === 0 && <div>Tidak ada data</div>}
         {error && <div>Maaf, ada error terjadi</div>}
-        {(!loading && kategori === "Rumah Sakit") && 
+        {!loading &&
+          kategori === "Rumah Sakit" &&
           listRS.map((rs) => (
             <DataRumahSakit
               rs={rs.Nama}
@@ -249,7 +280,8 @@ const PageKategoriProvinsi = () => {
               update={rs.Waktu_Update}
             />
           ))}
-        {(!loading && kategori === "Info Oksigen") &&
+        {!loading &&
+          kategori === "Info Oksigen" &&
           listIO.map((io) => (
             <DataInfoOksigen
               io={io.Nama}
@@ -259,7 +291,8 @@ const PageKategoriProvinsi = () => {
               update={io.Waktu_Update}
             />
           ))}
-        {(!loading && kategori === "Lokasi Vaksinasi") &&
+        {!loading &&
+          kategori === "Lokasi Vaksinasi" &&
           listLV.map((lv) => (
             <DataLokasiVaksinasi
               lv={lv.Nama}

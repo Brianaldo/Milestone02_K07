@@ -3,6 +3,12 @@
   background-color: white;
 }
 
+.page-kategori-provinsi .container-pilih-kota {
+  display: flex;
+  width: 100%;
+  margin-top: 23px;
+}
+
 .page-kategori-provinsi .page-break__container {
   width: 100%;
   display: flex;
@@ -22,6 +28,22 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.loaderKota {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid lightblue;
+  border-bottom: 8px solid grey;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spin 2s linear infinite;
+  margin-left: 5px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @media only screen and (max-width: 640px) {
