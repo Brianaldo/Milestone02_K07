@@ -114,7 +114,6 @@
     color: white;
     border: 1px solid black;
     border-radius: 16px;
-    margin-left: 84px;
     margin-top: 40px;
 }
 #contact-button{
@@ -122,16 +121,25 @@
     background-color: black;
     margin-left: 7px;
 }
+
 /* #contact-button:hover{
     position: relative;
     top: 223px;
     transition: 0.1s;
-}
-#telusuri-button:hover{
-    position: relative;
-    top: 223px;
-    transition: 0.1s;
 } */
+
+#telusuri-button {
+    margin-left: 84px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#telusuri-button:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
 .cekdisini-page{
     box-sizing: border-box;
     height: 320px;

@@ -11,11 +11,20 @@
   text-align: center;
   margin-top: 31px;
 }
+
 .peta .provinsi {
   position: relative;
   width: 100%;
   height: 100%;
   box-shadow: none;
+}
+
+.peta .provinsi path {
+  transition: all 0.2s;
+}
+
+.peta .provinsi path:hover {
+  fill: black;
 }
 
 .peta .kasus {
@@ -64,9 +73,17 @@
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-  border-radius: 16px;
+  border-radius: 32px;
   height: 42px;
   background-color: white;
   border-width: 1px;
   border-color: black;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#peta-button:hover {
+  color: white;
+  background-color: black;
 }

@@ -10,6 +10,12 @@
     text-align: left;
     justify-content: right;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.provinsi:hover {
+    box-shadow: #515151 0px 7px 29px 0px;
 }
 
 .provinsi .provinsi__text {

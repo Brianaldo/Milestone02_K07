@@ -8,6 +8,7 @@ import DataLokasiVaksinasi from "./DataLokasiVaksinasi";
 import { useHistory, useParams } from "react-router-dom";
 import { KategoriContext } from "../../Context/KategoriContext";
 import Loader from "./Loader";
+import LoadingCircle from "./LoadingCircle";
 
 const PageKategoriProvinsi = () => {
   const history = useHistory();
@@ -33,6 +34,8 @@ const PageKategoriProvinsi = () => {
     setListIO([]);
     setListLV([]);
     setError(false);
+    setIsKotaTerpilih(false);
+    setLoading(false);
     if (kategori === "Rumah Sakit") {
       fetch("https://paice-backend.herokuapp.com/hospital", {
         headers: {
@@ -244,7 +247,12 @@ const PageKategoriProvinsi = () => {
           onSelect={selectHandler}
           default="__DEFAULT__"
         />
-        {loadingKota && <div className="loaderKota" />}
+        {/* <LoadingCircle /> */}
+        {loadingKota && (
+          <div className="loading-circle-container">
+            <LoadingCircle />
+          </div>
+        )}
       </div>
       <div className="page-break__container">
         <div className="page-break" />

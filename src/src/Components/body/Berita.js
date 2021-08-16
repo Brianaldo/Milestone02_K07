@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from "../PageKategoriProvinsi/Loader";
 import "./Berita.css";
 import BeritaSatuan from "./BeritaSatuan";
 
@@ -26,6 +27,7 @@ const Berita = () => {
         <div className="page-break" />
       </div>
       <h2 style={{textAlign:"center"}}>Berita Covid-19 Terkini</h2>
+      {dataBerita.length === 0 && <Loader/>}
       {dataBerita.map((elmt) => (
         <a
           href={elmt.URL}

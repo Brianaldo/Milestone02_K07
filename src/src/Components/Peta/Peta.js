@@ -377,7 +377,7 @@ const Peta = () => {
         // width="1585.09192"
         // height="633.32788"
         viewBox="0 0 792.54596 316.6639"
-        fill="#98BCFF"
+        // fill="#98BCFF"
       >
         {__PETA__.map((prov) => (
           <path
@@ -386,6 +386,7 @@ const Peta = () => {
             id={prov.id}
             stroke-widths="2px"
             stroke="white"
+            fill="#98BCFF"
             provinsi={prov.provinsi}
             kasus_aktif={prov.kasus_aktif}
             sembuh={prov.sembuh}
