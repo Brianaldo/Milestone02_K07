@@ -13,8 +13,15 @@ const Peta = () => {
 
   const showHandler = (event) => {
     const positionHandler = (ev) => {
-      let lebar = (window.innerWidth - 640) / 2;
+      let lebar;
+      if (window.innerWidth >= 640) {
+        lebar = (window.innerWidth - 640)/2;
+      } else {
+        lebar = 0;
+      }
       let tinggi = window.scrollY - 60;
+      // console.log(lebar)
+      // console.log(ev.clientX)
       setX(ev.clientX - lebar);
       setY(ev.clientY + tinggi);
       // console.log(window.width)
