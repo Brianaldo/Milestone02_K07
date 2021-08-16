@@ -73,8 +73,10 @@ def UpdateData(Feed):
 
     df = df.rename(columns={"title" : "Judul", "link" : "URL", "pubDate" : "Waktu_Update"})
 
+    df = df[~df['Judul'].str.startswith("[SALAH]")]
+
     # Untuk Backend
-    # df.to_csv(os.path.join(os.getcwd(), "paice", "src", "DataCollecting", "data_berita.csv"), index=False)
+    # df.to_csv(os.path.join(os.getcwd(), "src", "src", "DataCollecting", "data_berita.csv"), index=False)
 
     Data = df.reset_index().to_dict(orient='records') # Untuk Frontend
 
