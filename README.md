@@ -17,7 +17,7 @@ Thariq Zhafran Satyagraha(16520491), Front end <br>
 Daffa Febriyananta Arifinsyah(16520297), UI/UX <br>
 David	Karel Halomoan(16520354), Full stack & Olah data <br>
 Brianaldo Phandiarta(16520010), Front end <br>
-Rayhan Kinan Muhannad(16520177), Fack end & Olah data <br>
+Rayhan Kinan Muhannad(16520177), Back end & Olah data <br>
 
 ## Cara Menjalankan Web:
 ### Online:
